@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "425610843639",
+    "firebase_url": "https://utm-organizer-backend.firebaseio.com",
+    "project_id": "utm-organizer-backend",
+    "storage_bucket": "utm-organizer-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425610843639:android:156658885fbda3ad13caf2",
+        "android_client_info": {
+          "package_name": "com.zeroTohero.UTMOrgnizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425610843639-onc03gk0t5anf6osc0ir42lugo2joipe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7skYeW6tQQte_Fgu4gPHU2F1QgQ-KOsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425610843639-onc03gk0t5anf6osc0ir42lugo2joipe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,25 @@
+@baseUrl = http://192.168.56.1:3000
+GET {{baseUrl}}/meetings
+
+
+POST {{baseUrl}}/meetings
+Content-Type: application/json
+
+      {
+    "meetingTitle": "Toastmaster",
+    "labelCategory": "Club",
+    "location": "N28,CGMTL",
+    "backgroundColor": "0xffFFDBDB",
+    "lableColor": "0xffD63447",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr,",
+    "startTime": "2020-07-23 13:51:04.958701",
+    "endTime": "2020-07-23 15:00:00.958701"
+  }
+
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+    "title": "New todo",
+    "completed": false
+}

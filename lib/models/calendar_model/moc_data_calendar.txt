@@ -1,0 +1,162 @@
+
+  List info = [
+    // Monday
+    [
+      MeetingInfo(
+        meetingTitle: 'Toastmaster',
+        labelCategory: 'Club',
+        time: {
+          'from': DateFormat('hh:mm a').format(DateTime.now()),
+          'to': DateFormat('hh:mm a').format(DateTime.now()),
+          'completeDate': DateFormat('dd-MM-yyyy').format(DateTime.now()),
+        },
+        location: 'N28,CGMTL',
+        date: {
+          'day': getDay(DateTime.now().weekday),
+          'dayNumber': DateTime.now().day.toString(),
+          'year': DateTime.now().year.toString(),
+        },
+        backgroundColor: Color(0xffFFDBDB),
+        lableColor: Color(0xffD63447),
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+      MeetingInfo(
+        meetingTitle: 'TedXEvent',
+        labelCategory: 'event',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Monday'},
+        location: 'DSI',
+        date: {'day': 'M', 'dayNumber': '9', 'year': '2020'},
+        backgroundColor: Color(0xffFFE8D6),
+        lableColor: Colors.black,
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+      MeetingInfo(
+        meetingTitle: 'Toastmaster',
+        labelCategory: 'club',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Sunday'},
+        location: 'N28,CGMTL',
+        date: {'day': 'Su', 'dayNumber': '8', 'year': '2020'},
+        backgroundColor: Color(0xffFFDBDB),
+        lableColor: Color(0xffD63447),
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+    ],
+    // Tuesday
+    [
+      MeetingInfo(
+        meetingTitle: 'TedXEvent',
+        labelCategory: 'event',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Monday'},
+        location: 'DSI',
+        date: {'day': 'M', 'dayNumber': '9', 'year': '2020'},
+        backgroundColor: Color(0xffFFE8D6),
+        lableColor: Colors.black,
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+    ],
+    // Wednesday
+    [
+      // MeetingInfo(
+      //   meetingTitle: 'TedXEvent',
+      //   labelCategory: 'event',
+      //   time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Monday'},
+      //   location: 'DSI',
+      //   date: {'day': 'M', 'dayNumber': '9', 'year': '2020'},
+      //   backgroundColor: Color(0xffFFE8D6),
+      //   lableColor: Colors.black,
+      //   description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      // ),
+    ],
+    // Thursday
+    [
+      MeetingInfo(
+        meetingTitle: 'TedXEvent',
+        labelCategory: 'event',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Monday'},
+        location: 'DSI',
+        date: {'day': 'Th', 'dayNumber': '12', 'year': '2020'},
+        backgroundColor: Color(0xffFFE8D6),
+        lableColor: Colors.black,
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+      MeetingInfo(
+        meetingTitle: 'TedXEvent',
+        labelCategory: 'event',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Monday'},
+        location: 'DSI',
+        date: {'day': 'Th', 'dayNumber': '12', 'year': '2020'},
+        backgroundColor: Color(0xffFFE8D6),
+        lableColor: Colors.black,
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+    ],
+    // Friday
+    [
+      MeetingInfo(
+        meetingTitle: 'TedXEvent',
+        labelCategory: 'event',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Monday'},
+        location: 'DSI',
+        date: {'day': 'F', 'dayNumber': '13', 'year': '2020'},
+        backgroundColor: Color(0xffFFE8D6),
+        lableColor: Colors.black,
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+    ],
+    // Saturday
+    [
+      MeetingInfo(
+        meetingTitle: 'TedXEvent',
+        labelCategory: 'event',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Monday'},
+        location: 'DSI',
+        date: {'day': 'Sa', 'dayNumber': '14', 'year': '2020'},
+        backgroundColor: Color(0xffFFE8D6),
+        lableColor: Colors.black,
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+    ],
+    // Sunday
+    [
+      MeetingInfo(
+        meetingTitle: 'Mobile Application Development',
+        labelCategory: 'class',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Sunday'},
+        location: 'N28,CGMTL',
+        date: {'day': 'Su', 'dayNumber': '8', 'year': '2020'},
+        backgroundColor: Color(0xffFFE8D6),
+        lableColor: Color(0xffF57B51),
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+      MeetingInfo(
+        meetingTitle: 'Toastmaster',
+        labelCategory: 'club',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Sunday'},
+        location: 'N28,CGMTL',
+        date: {'day': 'Su', 'dayNumber': '8', 'year': '2020'},
+        backgroundColor: Color(0xffFFDBDB),
+        lableColor: Color(0xffD63447),
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+      MeetingInfo(
+        meetingTitle: 'Mobile Application Development',
+        labelCategory: 'class',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Sunday'},
+        location: 'N28,CGMTL',
+        date: {'day': 'Su', 'dayNumber': '8', 'year': '2020'},
+        backgroundColor: Color(0xffFFE8D6),
+        lableColor: Color(0xffF57B51),
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+      MeetingInfo(
+        meetingTitle: 'Toastmaster',
+        labelCategory: 'club',
+        time: {'from': '8.00am', 'to': '9.00pm', 'completeDate': 'Every Sunday'},
+        location: 'N28,CGMTL',
+        date: {'day': 'Su', 'dayNumber': '8', 'year': '2020'},
+        backgroundColor: Color(0xffFFDBDB),
+        lableColor: Color(0xffD63447),
+        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
+      ),
+    ],
+  ];
