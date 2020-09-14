@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:utm_orgnization/dependencies.dart';
-// import 'package:utm_orgnization/models/schedule_model/class.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
-import 'package:utm_orgnization/data/jsonData.dart';
-// import 'package:utm_orgnization/models/schedule_model/doctor.dart';
+import 'package:utm_orgnization/models/schedule_model/date_converter_helper.dart';
 import 'package:utm_orgnization/models/schedule_model/major.dart';
 import 'package:utm_orgnization/models/schedule_model/major_box.dart';
-// import 'package:utm_orgnization/models/schedule_model/section.dart';
 import 'package:utm_orgnization/models/schedule_model/semester.dart';
 import 'package:utm_orgnization/models/schedule_model/year.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
@@ -60,168 +57,6 @@ class ScheduleData extends ChangeNotifier {
     } //end i
 
     return false;
-  }
-
-  int converToDay(String courseDay) {
-    int temp = 0;
-    Map days = {
-      'Sunday': 7,
-      'Monday': 1,
-      'Tuesday': 2,
-      'Wednesday': 3,
-      'Thursday': 4,
-      'Friday': 5,
-      'Saturday': 6,
-    };
-    List daysStr = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
-    ];
-
-    final courseD = days[courseDay];
-
-    if (today.weekday == days['Sunday']) {
-      //check the course day in case of (SUNDAY)
-
-      //courseD = 2 (Dynamic)
-      if (courseD == days['Sunday']) {
-        return today.day;
-      } else if (courseD == days['Monday']) {
-        return today.day + 1;
-      } else if (courseD == days['Tuesday']) {
-        return today.day + 2;
-      } else if (courseD == days['Wednesday']) {
-        return today.day + 3;
-      } else {
-        return today.day + 4;
-      }
-    }
-
-    if (today.weekday == days['Monday']) {
-      //check the course day in case of (MONDAY)
-
-      if (courseD == days['Sunday']) {
-        return today.day - 1;
-      } else if (courseD == days['Monday']) {
-        return today.day;
-      } else if (courseD == days['Tuesday']) {
-        return today.day + 1;
-      } else if (courseD == days['Wednesday']) {
-        return today.day + 2;
-      } else {
-        return today.day + 3;
-      }
-    }
-
-    if (today.weekday == days['Tuesday']) {
-      //check the course day in case of (TUESDAY)
-
-      if (courseD == days['Sunday']) {
-        return today.day - 2;
-      } else if (courseD == days['Monday']) {
-        return today.day - 1;
-      } else if (courseD == days['Tuesday']) {
-        return today.day;
-      } else if (courseD == days['Wednesday']) {
-        return today.day + 1;
-      } else {
-        return today.day + 2;
-      }
-    }
-
-    if (today.weekday == days['Wednesday']) {
-      //check the course day in case of (WEDNESDAY)
-
-      if (courseD == days['Sunday']) {
-        return today.day - 3;
-      } else if (courseD == days['Monday']) {
-        return today.day - 2;
-      } else if (courseD == days['Tuesday']) {
-        return today.day - 1;
-      } else if (courseD == days['Wednesday']) {
-        return today.day;
-      } else {
-        return today.day + 1;
-      }
-    }
-
-    if (today.weekday == days['Thursday']) {
-      //check the course day in case of (THURSDAY)
-
-      if (courseD == days['Sunday']) {
-        return today.day - 4;
-      } else if (courseD == days['Monday']) {
-        return today.day - 3;
-      } else if (courseD == days['Tuesday']) {
-        return today.day - 2;
-      } else if (courseD == days['Wednesday']) {
-        return today.day - 1;
-      } else {
-        return today.day;
-      }
-    }
-
-    if (today.weekday == days['Friday']) {
-      //check the course day in case of (FRIDAY)
-
-      if (courseD == days['Sunday']) {
-        return today.day - 5;
-      } else if (courseD == days['Monday']) {
-        return today.day - 4;
-      } else if (courseD == days['Tuesday']) {
-        return today.day - 3;
-      } else if (courseD == days['Wednesday']) {
-        return today.day - 2;
-      } else {
-        return today.day - 1;
-      }
-    }
-
-    if (today.weekday == days['Saturday']) {
-      //check the course day in case of (SATURDAY)
-
-      if (courseD == days['Sunday']) {
-        return today.day - 6;
-      } else if (courseD == days['Monday']) {
-        return today.day - 5;
-      } else if (courseD == days['Tuesday']) {
-        return today.day - 4;
-      } else if (courseD == days['Wednesday']) {
-        return today.day - 3;
-      } else {
-        return today.day - 2;
-      }
-    }
-
-    //today.weekday = Monday = 1
-    //courseDay = Tuesday = 2
-
-    // if (today.weekday == days[courseDay])
-    //   return today.day + 2;
-    // else if (courseDay == 'Sunday') {
-    //   temp = days[courseDay] - today.weekday;
-    //   return (temp + today.day) - 7;
-    // } else if (today.weekday > days[courseDay]) {
-    //   temp = today.weekday - days[courseDay];
-    //   return today.subtract(Duration(days: temp)).day;
-    // } else if (today.day < days[courseDay]) {
-    //   temp = days[courseDay] - today.weekday;
-    //   return today.add(Duration(days: temp)).day;
-    // } else if (today.day > days[courseDay]) {
-    //   temp =
-    //       today.add(Duration(days: days[courseDay] - today.weekday)).day - today.day;
-    //   return today.add(Duration(days: temp)).day;
-    // } else {
-    //   print("schedule_data.dart: All conditions false: day is set to THURSDAY");
-    //   return days['Thursday'];
-    // }
-
-    return 1;
   }
 
   final today = DateTime.now();
@@ -626,3 +461,28 @@ class ScheduleData extends ChangeNotifier {
     }
   }
 } //?end
+
+
+
+    //today.weekday = Monday = 1
+    //courseDay = Tuesday = 2
+
+    // if (today.weekday == days[courseDay])
+    //   return today.day + 2;
+    // else if (courseDay == 'Sunday') {
+    //   temp = days[courseDay] - today.weekday;
+    //   return (temp + today.day) - 7;
+    // } else if (today.weekday > days[courseDay]) {
+    //   temp = today.weekday - days[courseDay];
+    //   return today.subtract(Duration(days: temp)).day;
+    // } else if (today.day < days[courseDay]) {
+    //   temp = days[courseDay] - today.weekday;
+    //   return today.add(Duration(days: temp)).day;
+    // } else if (today.day > days[courseDay]) {
+    //   temp =
+    //       today.add(Duration(days: days[courseDay] - today.weekday)).day - today.day;
+    //   return today.add(Duration(days: temp)).day;
+    // } else {
+    //   print("schedule_data.dart: All conditions false: day is set to THURSDAY");
+    //   return days['Thursday'];
+    // }
