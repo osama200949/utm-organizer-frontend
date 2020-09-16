@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:intl/intl.dart';
-import 'package:utm_orgnization/models/calendar_model/category.dart';
 import 'package:utm_orgnization/models/calendar_model/meeting_info.dart';
-import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/services/meetings_service.dart';
-import 'package:utm_orgnization/services/rest/rest_service.dart';
-
 import '../../dependencies.dart';
 import '../user.dart';
 
@@ -50,71 +44,6 @@ class MeetingData extends ChangeNotifier {
     print('serverMeetings');
     print(serverMeetings);
     notifyListeners();
-  }
-
-  bool isThereTimetable = false;
-  static final today = DateTime.now();
-
-  void setTimeTable(List<ClassInfo> classes) {
-    List<MeetingInfo> meetings = [];
-    //? Sem starat date TODO: change later with the exact sem start date
-    DateTime semStart =
-        DateTime(today.year, DateTime.september, 29, today.hour);
-    // CREATE
-    if (!isThereTimetable) {
-      for (int i = 0; i < classes.length; i++) {
-        DateTime tempStart = classes[i]
-            .startTime
-            .add(Duration(days: semStart.difference(today).inDays));
-        DateTime tempEnd = classes[i]
-            .endTime
-            .add(Duration(days: semStart.difference(today).inDays));
-        //? REPEAT FOR 4 MONTHS FROM THE CHOOSEN DAY
-        int numberOfMonths = 4;
-        var course;
-        for (int j = 0; j < (numberOfMonths * 4); j++) {
-          course = MeetingInfo(
-            isCourse: true, // Main difference to know it is a course
-            meetingTitle: classes[i].name,
-            labelCategory: 'Class',
-            startTime: tempStart,
-            endTime: tempEnd,
-            location: classes[i].code,
-            backgroundColor: Color(0xffFFD6A6),
-            lableColor: Color(0xffF57B51),
-            description: 'You have class with Dr.${classes[i].doctorName}',
-          );
-
-          addTask(newTask: course);
-
-          tempStart = tempStart.add(Duration(days: 7));
-          tempEnd = tempEnd.add(Duration(days: 7));
-        }
-      }
-
-      currentTimetable = meetings;
-
-      //! There Is A Timetable That Need To Be Replaced
-    } else {
-      clearTimetable();
-      isThereTimetable = false;
-      setTimeTable(classes);
-    }
-
-    isThereTimetable = true;
-    notifyListeners();
-  }
-
-  void clearTimetable() {
-    meetingService.clearTimetable();
-
-    dateInfo.forEach((key, meetings) {
-      for (int i = 0; i < meetings.length; i++) {
-        if (meetings[i].isCourse) {
-          dateInfo[key].removeAt(i);
-        }
-      }
-    });
   }
 
 //! Top calendar
@@ -374,4 +303,69 @@ class MeetingData extends ChangeNotifier {
 //   if (!isExist) {
 //     dateInfo[newDay].add(newTask);
 //   }
+// }
+
+//! Set timetable on calendar feature
+// bool isThereTimetable = false;
+// static final today = DateTime.now();
+// void setTimeTable(List<ClassInfo> classes) {
+//   List<MeetingInfo> meetings = [];
+//   //? Sem starat date TODO: change later with the exact sem start date
+//   DateTime semStart =
+//       DateTime(today.year, DateTime.september, 29, today.hour);
+//   // CREATE
+//   if (!isThereTimetable) {
+//     for (int i = 0; i < classes.length; i++) {
+//       DateTime tempStart = classes[i]
+//           .startTime
+//           .add(Duration(days: semStart.difference(today).inDays));
+//       DateTime tempEnd = classes[i]
+//           .endTime
+//           .add(Duration(days: semStart.difference(today).inDays));
+//       //? REPEAT FOR 4 MONTHS FROM THE CHOOSEN DAY
+//       int numberOfMonths = 4;
+//       var course;
+//       for (int j = 0; j < (numberOfMonths * 4); j++) {
+//         course = MeetingInfo(
+//           isCourse: true, // Main difference to know it is a course
+//           meetingTitle: classes[i].name,
+//           labelCategory: 'Class',
+//           startTime: tempStart,
+//           endTime: tempEnd,
+//           location: classes[i].code,
+//           backgroundColor: Color(0xffFFD6A6),
+//           lableColor: Color(0xffF57B51),
+//           description: 'You have class with Dr.${classes[i].doctorName}',
+//         );
+
+//         addTask(newTask: course);
+
+//         tempStart = tempStart.add(Duration(days: 7));
+//         tempEnd = tempEnd.add(Duration(days: 7));
+//       }
+//     }
+
+//     currentTimetable = meetings;
+
+//     //? There Is A Timetable That Need To Be Replaced
+//   } else {
+//     clearTimetable();
+//     isThereTimetable = false;
+//     setTimeTable(classes);
+//   }
+
+//   isThereTimetable = true;
+//   notifyListeners();
+// }
+
+// void clearTimetable() {
+//   meetingService.clearTimetable();
+
+//   dateInfo.forEach((key, meetings) {
+//     for (int i = 0; i < meetings.length; i++) {
+//       if (meetings[i].isCourse) {
+//         dateInfo[key].removeAt(i);
+//       }
+//     }
+//   });
 // }

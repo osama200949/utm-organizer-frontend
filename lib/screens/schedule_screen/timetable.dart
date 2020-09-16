@@ -74,8 +74,8 @@ class _TimeTableState extends State<Timetable> {
                 Icons.done,
               ),
               onPressed: () {
-                Provider.of<MeetingData>(context, listen: false)
-                    .setTimeTable(data.classes);
+                // Provider.of<MeetingData>(context, listen: false)   //! Set timetable on calendar feature
+                //     .setTimeTable(data.classes);
 
                 Navigator.pushNamedAndRemoveUntil(
                     context, kMainNv, (route) => false);
