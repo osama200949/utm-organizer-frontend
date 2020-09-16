@@ -87,9 +87,6 @@ void bottomSheet(sheetContext, Course course) {
                     ),
                   ),
                 ),
-                // Divider(
-                //   thickness: 1,
-                // ),
                 course.sections[section].isPressed //section >= 0
                     ? course.sections[section].doctor != null
                         ? Padding(
@@ -184,8 +181,8 @@ void bottomSheet(sheetContext, Course course) {
                               data.addCourse(course);
                               Navigator.pop(context);
 
-//! check CLASH
-// data.isClash();
+                                //! check CLASH
+                                // data.isClash();
 //                               if (data.isClashed) {
 //                                 Scaffold.of(sheetContext).showSnackBar(SnackBar(
 //                                   content: Text('Warning you have clash now!'),
@@ -203,7 +200,6 @@ void bottomSheet(sheetContext, Course course) {
                     ),
                   ],
                 ),
-
                 SizedBox(height: 20)
               ],
             ),

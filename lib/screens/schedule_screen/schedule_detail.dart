@@ -6,7 +6,7 @@ import 'package:utm_orgnization/models/provider/schedule_data.dart';
 import 'package:utm_orgnization/components/canvas/Canva_home.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/utils/constants.dart';
-import './widget/main_bottom_sheet.dart';
+import 'widget/courses_listview.dart';
 
 class ScheduleDetail extends StatefulWidget {
   @override
@@ -24,7 +24,6 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
     });
   }
 
-  int sem = 0;
   int year = 0;
   int others = 0;
   @override
@@ -197,7 +196,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                                       },
                                     ),
 
-                                    //! Others......................
+                                    //! COURSES AREA......................
                                   ),
                                 ),
                                 // SizedBox(
@@ -214,7 +213,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                                         fontFamily: 'Muli'),
                                   ),
                                 ),
-                                MainBottomSheet(sem),
+                                CoursesBottomSheet(),
                               ], // end of the white area
                             ),
                           ),
