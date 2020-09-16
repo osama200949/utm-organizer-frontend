@@ -240,8 +240,8 @@ class ScheduleData extends ChangeNotifier {
 
   void removeCourse(Course c) async {
     // Clear the Course from the btoomSheet
-    getCourse(currentCourse).sections[currentSection].isPressed = false;  
-    
+    getCourse(currentCourse).sections[currentSection].isPressed = false;
+
     for (int i = 0; i < selectedCourses.length; i++) {
       if (selectedCourses[i].code == c.code) {
         selectedCourses.removeAt(i);
@@ -333,6 +333,14 @@ class ScheduleData extends ChangeNotifier {
   void setCurrentMajor(int index) {
     currentMajor = index;
     notifyListeners();
+  }
+
+  Future<void> addSelectedCoursesToDatabase() async {
+    selectedCourses.forEach((element) {
+      // dataService.updateSelectedCourse(element);
+      dataService.addSelectedCourse(element);
+    });
+    // dataService.addSelectedCourse(selectedCourses);
   }
 
 //! ARCHIEVE

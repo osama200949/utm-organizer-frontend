@@ -170,8 +170,6 @@ void bottomSheet(sheetContext, Course course) {
                           ? (selected) {
                               state(() {
                                 if (course.sections[section].isPressed) {
-                                  // course.sections[section].isPressed = false;
-                                  // data.getCourse(data.currentCourse).sections[section].isPressed = false;
                                   data.currentSection = section;
                                   data.removeCourse(course,);
                                 }

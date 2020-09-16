@@ -1,22 +1,23 @@
 int converToDay(String courseDay) {
+  courseDay = courseDay.toLowerCase();
   final today = DateTime.now();
   Map days = {
-    'Sunday': 7,
-    'Monday': 1,
-    'Tuesday': 2,
-    'Wednesday': 3,
-    'Thursday': 4,
-    'Friday': 5,
-    'Saturday': 6,
+    'sunday': 7,
+    'monday': 1,
+    'tuesday': 2,
+    'wednesday': 3,
+    'thursday': 4,
+    'friday': 5,
+    'saturday': 6,
   };
   List<String> weekDaysStr = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday'
   ];
   List weekDaysArray = [
     [0, 1, 2, 3, 4],
