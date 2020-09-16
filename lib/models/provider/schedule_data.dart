@@ -240,14 +240,15 @@ class ScheduleData extends ChangeNotifier {
 
   void removeCourse(Course c) async {
     // Clear the Course from the btoomSheet
-    getCourse(currentCourse).sections[currentSection].isPressed = false;
 
+    getCourse(currentCourse).sections[currentSection].isPressed = false;
     for (int i = 0; i < selectedCourses.length; i++) {
       if (selectedCourses[i].code == c.code) {
         selectedCourses.removeAt(i);
       }
     }
 
+    // await dataService.removeSelectedCourse(c);
     notifyListeners();
   }
 

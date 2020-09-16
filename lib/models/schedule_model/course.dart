@@ -7,7 +7,10 @@ class Course {
   final String name;
   List<Section> sections;
 
-  Course({this.id = '', this.type, this.name, this.sections, this.code});
+  Course({this.id = '', this.type, this.name, this.sections, this.code}){
+    this.id;
+    print(this.id);
+  }
 
   Course.fromJson(Map<String, dynamic> json)
       : this(

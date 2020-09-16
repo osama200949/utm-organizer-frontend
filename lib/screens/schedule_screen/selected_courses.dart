@@ -20,7 +20,7 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
       //  body: Container(
       //    color: Colors.green,
       //  ),
-      body: data.selectedCourses.length!=null ? ListView.builder(
+      body: data.selectedCourses.length!=0 ? ListView.builder(
           itemCount: data.selectedCourses.length,
           itemBuilder: (context, index) {
             return ListTile(
