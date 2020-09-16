@@ -4,6 +4,7 @@ import 'package:utm_orgnization/models/schedule_model/course.dart';
 import 'package:utm_orgnization/models/schedule_model/date_converter_helper.dart';
 import 'package:utm_orgnization/models/schedule_model/major.dart';
 import 'package:utm_orgnization/models/schedule_model/major_box.dart';
+import 'package:utm_orgnization/models/schedule_model/section.dart';
 import 'package:utm_orgnization/models/schedule_model/semester.dart';
 import 'package:utm_orgnization/models/schedule_model/year.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
@@ -180,6 +181,14 @@ class ScheduleData extends ChangeNotifier {
 
   List<Course> selectedCourses = [];
 
+
+  // Map<Course,Section> mapSelectedCourse = {
+  //   // Map<Course, Section> : '',
+  // };
+// if(!selectedCourse.containsKey('theKey'))
+
+
+
   void addCourse(Course c) async {
     bool present = false;
     Course cs = Course(
@@ -194,14 +203,24 @@ class ScheduleData extends ChangeNotifier {
       }
     }
 
+    // if (!present) {
+    //   final result = await dataService.addSelectedCourse(cs);
+    //   selectedCourses.add(result);
+    // } else
+    //   updateCourse(c);
     if (!present) {
-      final result = await dataService.addSelectedCourse(cs);
-      selectedCourses.add(result);
+      // final result = await dataService.addSelectedCourse(cs);
+      selectedCourses.add(cs);
     } else
       updateCourse(c);
 
     notifyListeners();
   }
+
+
+
+
+
 
   void unselect(Course c) {
     for (int i = 0; i < selectedCourses.length; i++) {
@@ -222,18 +241,20 @@ class ScheduleData extends ChangeNotifier {
     for (int i = 0; i < selectedCourses.length; i++) {
       if (c.code == selectedCourses[i].code) {
         selectedCourses[i].sections = [c.sections[currentSection]];
-        await dataService.updateSelectedCourse(selectedCourses[i]);
+        // await dataService.updateSelectedCourse(selectedCourses[i]);
       }
     }
   }
 
-  void removeCourse(Course c) async {
+  Future<void> removeCourse(Course c) async {
     for (int i = 0; i < selectedCourses.length; i++) {
       if (selectedCourses[i].code == c.code) {
-        await dataService.removeSelectedCourse(selectedCourses[i]);
+        // await dataService.removeSelectedCourse(selectedCourses[i]);
         selectedCourses.removeAt(i);
       }
     }
+
+    notifyListeners();
   }
 
 //! SELECTED COURSES
@@ -301,7 +322,7 @@ class ScheduleData extends ChangeNotifier {
 
     return _allSem;
   }
-
+  
   Course getCourse(int index) {
     if (currentYearindex == -1)
       return allCourseData[index];

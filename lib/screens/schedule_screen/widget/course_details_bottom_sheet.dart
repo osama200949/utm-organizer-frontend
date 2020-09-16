@@ -5,7 +5,7 @@ import 'package:utm_orgnization/models/provider/schedule_data.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 
 void bottomSheet(sheetContext, Course course) {
-  ScheduleData data = Provider.of<ScheduleData>(sheetContext, listen: false);
+  final data = Provider.of<ScheduleData>(sheetContext, listen: false);
   int section = 0;
   for (int j = 0; j < course.sections.length; j++) {
     if (course.sections[j].isPressed == true) {
@@ -177,11 +177,25 @@ void bottomSheet(sheetContext, Course course) {
                               : Colors.grey),
                       backgroundColor: Color(0xffD63447),
                       onSelected: course.sections[section].isPressed
-                          ? (selected) {
+                          ? (_) {
                               data.addCourse(course);
                               Navigator.pop(context);
+                          }
+                          : null,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20)
+              ],
+            ),
+          );
+        });
+      });
+}
 
-                                //! check CLASH
+
+
+              //! check CLASH
                                 // data.isClash();
 //                               if (data.isClashed) {
 //                                 Scaffold.of(sheetContext).showSnackBar(SnackBar(
@@ -195,15 +209,3 @@ void bottomSheet(sheetContext, Course course) {
 //                                   ),
 //                                 ));
 //                               }
-                            }
-                          : null,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20)
-              ],
-            ),
-          );
-        });
-      });
-}
