@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar;
+  final isCalendar;
 
   const TopAppBar({
     this.appBar,
+    this.isCalendar = false,
   });
 
   @override
@@ -23,12 +26,22 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: <Widget>[
         SvgPicture.asset('images/icons/icon-bell.svg'),
-        FlatButton(
-          onPressed: () async => showDialogue(context),
-          child: SvgPicture.asset(
-            'images/icons/dashborad.svg',
-          ),
-        ),
+        isCalendar
+            ? FlatButton(
+                onPressed: () =>
+                    Navigator.pushNamed(context, kTimetablePreview),
+                child: SvgPicture.asset(
+                  'images/icons/timetable_calendar.svg',
+                  color: Colors.white,
+                  fit: BoxFit.cover,
+                ),
+              )
+            : FlatButton(
+                onPressed: () async => showDialogue(context),
+                child: SvgPicture.asset(
+                  'images/icons/dashborad.svg',
+                ),
+              ),
       ],
     );
   }

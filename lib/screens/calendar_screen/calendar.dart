@@ -32,6 +32,7 @@ class CalendarScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: TopAppBar(
+        isCalendar: true,
         appBar: AppBar(),
         // appBar: AppBar(
         //   backgroundColor: Colors.transparent,

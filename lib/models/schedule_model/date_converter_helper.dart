@@ -29,6 +29,8 @@ int converToDay(String courseDay) {
   ];
 
   int courseD = days[courseDay];
+  if (courseD == 7) //SUNDAY case
+    courseD = 0;
 
   for (int i = 0; i < weekDaysStr.length; i++) {
     if (today.weekday == days[weekDaysStr[i]]) {

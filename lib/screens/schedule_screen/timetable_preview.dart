@@ -3,21 +3,22 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/schedule_data.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class TimetablePreview extends StatefulWidget {
-  // final List<Course> courses;
-  final List<ClassInfo> classes;
-  TimetablePreview(this.classes);
   @override
   _TimetablePreviewState createState() => _TimetablePreviewState();
 }
 
 class _TimetablePreviewState extends State<TimetablePreview> {
+
   @override
   Widget build(BuildContext context) {
+        final classes = Provider.of<ScheduleData>(context).classes;
+
     return Scaffold(
         body: SfCalendar(
           view: CalendarView.workWeek,
@@ -60,7 +61,7 @@ class _TimetablePreviewState extends State<TimetablePreview> {
           firstDayOfWeek: 7,
           //! FTECH THE DATA
           dataSource: MeetingDataSource(
-            widget.classes,
+            classes,
           ),
 
           headerHeight: 0, // DISABLE THE MONTH VIEW
@@ -71,9 +72,6 @@ class _TimetablePreviewState extends State<TimetablePreview> {
               FontAwesomeIcons.arrowLeft,
             ),
             onPressed: () {
-              Provider.of<MeetingData>(context, listen: false)
-                  .setTimeTable(widget.classes);
-
               Navigator.pop(context, kMainNv);
             }));
   }

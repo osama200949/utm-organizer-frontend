@@ -58,7 +58,9 @@ class Router {
         break;
       case kCalenderRoute:
         // builder = (BuildContext context) => CalendarScreen();
-        builder = (BuildContext context) => MainNavigation(currentIndex: 1,);
+        builder = (BuildContext context) => MainNavigation(
+              currentIndex: 1,
+            );
         break;
       case kWlcomeViewRoute:
         builder = (BuildContext context) => WelcomingView();
@@ -99,7 +101,9 @@ class Router {
         break;
       case kProfileRoute:
         // builder = (BuildContext context) => ProfileScreen();
-        builder = (BuildContext context) => MainNavigation(currentIndex: 3,);
+        builder = (BuildContext context) => MainNavigation(
+              currentIndex: 3,
+            );
         break;
 
       case kEventInfoRoute:
@@ -130,13 +134,11 @@ class Router {
         break;
       case kTimetable:
         builder = (BuildContext context) => Timetable(
-              // data,
+            // data,
             );
         break;
       case kTimetablePreview:
-        builder = (BuildContext context) => TimetablePreview(
-              data,
-            );
+        builder = (BuildContext context) => TimetablePreview();
         break;
 
       default:
