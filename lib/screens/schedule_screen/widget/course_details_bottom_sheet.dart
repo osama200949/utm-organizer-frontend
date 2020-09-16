@@ -4,14 +4,25 @@ import 'package:provider/provider.dart';
 import 'package:utm_orgnization/models/provider/schedule_data.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 
+
+
+
 void bottomSheet(sheetContext, Course course) {
+
   final data = Provider.of<ScheduleData>(sheetContext, listen: false);
+  print(data);
   int section = 0;
   for (int j = 0; j < course.sections.length; j++) {
     if (course.sections[j].isPressed == true) {
       section = j;
     }
   }
+  // for (int j = 0; j < data.getCourse(data.currentCourse).sections.length; j++) {
+  //   if (data.getCourse(data.currentCourse).sections[j].isPressed == true) {
+  //     data.currentSection = j;
+  //   }
+  // }
+
   showModalBottomSheet(
       isDismissible: false,
       backgroundColor: Color(0xff000000).withOpacity(0.001),
@@ -159,8 +170,10 @@ void bottomSheet(sheetContext, Course course) {
                           ? (selected) {
                               state(() {
                                 if (course.sections[section].isPressed) {
-                                  course.sections[section].isPressed = false;
-                                  data.removeCourse(course);
+                                  // course.sections[section].isPressed = false;
+                                  // data.getCourse(data.currentCourse).sections[section].isPressed = false;
+                                  data.currentSection = section;
+                                  data.removeCourse(course,);
                                 }
                               });
                             }

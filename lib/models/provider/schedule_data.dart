@@ -181,13 +181,10 @@ class ScheduleData extends ChangeNotifier {
 
   List<Course> selectedCourses = [];
 
-
   // Map<Course,Section> mapSelectedCourse = {
   //   // Map<Course, Section> : '',
   // };
 // if(!selectedCourse.containsKey('theKey'))
-
-
 
   void addCourse(Course c) async {
     bool present = false;
@@ -217,11 +214,6 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-
-
-
   void unselect(Course c) {
     for (int i = 0; i < selectedCourses.length; i++) {
       if (c.code == selectedCourses[i].code) {
@@ -246,10 +238,12 @@ class ScheduleData extends ChangeNotifier {
     }
   }
 
-  Future<void> removeCourse(Course c) async {
+  void removeCourse(Course c) async {
+    // Clear the Course from the btoomSheet
+    getCourse(currentCourse).sections[currentSection].isPressed = false;  
+    
     for (int i = 0; i < selectedCourses.length; i++) {
       if (selectedCourses[i].code == c.code) {
-        // await dataService.removeSelectedCourse(selectedCourses[i]);
         selectedCourses.removeAt(i);
       }
     }
@@ -322,7 +316,7 @@ class ScheduleData extends ChangeNotifier {
 
     return _allSem;
   }
-  
+
   Course getCourse(int index) {
     if (currentYearindex == -1)
       return allCourseData[index];
@@ -483,27 +477,25 @@ class ScheduleData extends ChangeNotifier {
   }
 } //?end
 
+//today.weekday = Monday = 1
+//courseDay = Tuesday = 2
 
-
-    //today.weekday = Monday = 1
-    //courseDay = Tuesday = 2
-
-    // if (today.weekday == days[courseDay])
-    //   return today.day + 2;
-    // else if (courseDay == 'Sunday') {
-    //   temp = days[courseDay] - today.weekday;
-    //   return (temp + today.day) - 7;
-    // } else if (today.weekday > days[courseDay]) {
-    //   temp = today.weekday - days[courseDay];
-    //   return today.subtract(Duration(days: temp)).day;
-    // } else if (today.day < days[courseDay]) {
-    //   temp = days[courseDay] - today.weekday;
-    //   return today.add(Duration(days: temp)).day;
-    // } else if (today.day > days[courseDay]) {
-    //   temp =
-    //       today.add(Duration(days: days[courseDay] - today.weekday)).day - today.day;
-    //   return today.add(Duration(days: temp)).day;
-    // } else {
-    //   print("schedule_data.dart: All conditions false: day is set to THURSDAY");
-    //   return days['Thursday'];
-    // }
+// if (today.weekday == days[courseDay])
+//   return today.day + 2;
+// else if (courseDay == 'Sunday') {
+//   temp = days[courseDay] - today.weekday;
+//   return (temp + today.day) - 7;
+// } else if (today.weekday > days[courseDay]) {
+//   temp = today.weekday - days[courseDay];
+//   return today.subtract(Duration(days: temp)).day;
+// } else if (today.day < days[courseDay]) {
+//   temp = days[courseDay] - today.weekday;
+//   return today.add(Duration(days: temp)).day;
+// } else if (today.day > days[courseDay]) {
+//   temp =
+//       today.add(Duration(days: days[courseDay] - today.weekday)).day - today.day;
+//   return today.add(Duration(days: temp)).day;
+// } else {
+//   print("schedule_data.dart: All conditions false: day is set to THURSDAY");
+//   return days['Thursday'];
+// }
