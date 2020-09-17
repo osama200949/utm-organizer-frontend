@@ -77,7 +77,7 @@ class _TimeTableState extends State<Timetable> {
                 // Provider.of<MeetingData>(context, listen: false)   //! Set timetable on calendar feature
                 //     .setTimeTable(data.classes);
 
-                Provider.of<ScheduleData>(context,listen: false).addSelectedCoursesToDatabase();
+                // Provider.of<ScheduleData>(context,listen: false).addSelectedCoursesToDatabase();
 
                 Navigator.pushNamedAndRemoveUntil(
                     context, kMainNv, (route) => false);

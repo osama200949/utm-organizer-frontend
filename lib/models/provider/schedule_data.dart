@@ -181,10 +181,6 @@ class ScheduleData extends ChangeNotifier {
 
   List<Course> selectedCourses = [];
 
-  // Map<Course,Section> mapSelectedCourse = {
-  //   // Map<Course, Section> : '',
-  // };
-// if(!selectedCourse.containsKey('theKey'))
 
   void addCourse(Course c) async {
     bool present = false;
@@ -200,11 +196,6 @@ class ScheduleData extends ChangeNotifier {
       }
     }
 
-    // if (!present) {
-    //   final result = await dataService.addSelectedCourse(cs);
-    //   selectedCourses.add(result);
-    // } else
-    //   updateCourse(c);
     if (!present) {
       // final result = await dataService.addSelectedCourse(cs);
       selectedCourses.add(cs);
@@ -214,20 +205,20 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void unselect(Course c) {
-    for (int i = 0; i < selectedCourses.length; i++) {
-      if (c.code == selectedCourses[i].code) {
-        for (int j = 0; j < selectedCourses[i].sections.length; j++) {
-          if (c.sections[0].number == selectedCourses[i].sections[j].number) {
-            selectedCourses[i].sections[j].isPressed = false;
-            break;
-          }
-        }
-        break;
-      }
-    }
-    removeCourse(c);
-  }
+  // void unselect(Course c) {
+  //   for (int i = 0; i < selectedCourses.length; i++) {
+  //     if (c.code == selectedCourses[i].code) {
+  //       for (int j = 0; j < selectedCourses[i].sections.length; j++) {
+  //         if (c.sections[0].number == selectedCourses[i].sections[j].number) {
+  //           selectedCourses[i].sections[j].isPressed = false;
+  //           break;
+  //         }
+  //       }
+  //       break;
+  //     }
+  //   }
+  //   removeCourse(c);
+  // }
 
   void updateCourse(Course c) async {
     for (int i = 0; i < selectedCourses.length; i++) {
@@ -248,7 +239,7 @@ class ScheduleData extends ChangeNotifier {
       }
     }
 
-    // await dataService.removeSelectedCourse(c);
+    // await dataService.removeSelectedCourse(selectedCourses[i]);
     notifyListeners();
   }
 
