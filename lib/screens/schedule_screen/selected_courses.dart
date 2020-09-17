@@ -102,7 +102,6 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                                             return ListTile(
                                               title: Text(data
                                                   .selectedCourses[index].name,style: TextStyle(fontSize: 16),),
-                                              // title:Text( 'data.selectedCourses[index].name'),
                                               trailing: IconButton(
                                                 icon: Icon(
                                                   Icons.delete,
@@ -112,9 +111,6 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                                                 onPressed: () {
                                                   data.removeCourse(data
                                                       .selectedCourses[index]);
-                                                  // setState(() {
-
-                                                  // });
                                                 },
                                               ),
                                             );

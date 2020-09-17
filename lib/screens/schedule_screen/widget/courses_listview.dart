@@ -32,7 +32,10 @@ class _MainBottomSheetState extends State<CoursesBottomSheet> {
                       child: InkWell(
                         onTap: () {
                           data.setCurrentCourse = index;
-                          bottomSheet(context, data.getCourse(index));  //! COURSE DETAILS BOTTOM SHEET
+                          bottomSheet(
+                              context,
+                              data.getCourse(
+                                  index)); //! COURSE DETAILS BOTTOM SHEET
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 15),

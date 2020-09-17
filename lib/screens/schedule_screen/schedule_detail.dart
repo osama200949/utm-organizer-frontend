@@ -106,14 +106,6 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                                 ),
                               ),
                             ),
-                            // IconButton(icon:
-                            //  Icon(
-                            //   FontAwesomeIcons.calendarAlt,
-                            //   color: Colors.white,
-                            //   size: 35,
-                            // ),
-                            // onPressed: ()=>Navigator.pushNamed(context,kSelectedCourses),
-                            // ),
                           ),
                         ),
                       ),
