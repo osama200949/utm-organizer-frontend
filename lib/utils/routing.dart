@@ -18,6 +18,7 @@ import 'package:utm_orgnization/screens/home_screen/home_screen.dart';
 import 'package:utm_orgnization/screens/profile_screens/profile_screen.dart';
 import 'package:utm_orgnization/screens/schedule_screen/schedule.dart';
 import 'package:utm_orgnization/screens/schedule_screen/schedule_detail.dart';
+import 'package:utm_orgnization/screens/schedule_screen/selected_courses.dart';
 import 'package:utm_orgnization/screens/schedule_screen/timetable.dart';
 import 'package:utm_orgnization/screens/schedule_screen/timetable_preview.dart';
 import 'package:utm_orgnization/screens/splash_screens/choose_page.dart';
@@ -139,6 +140,9 @@ class Router {
         break;
       case kTimetablePreview:
         builder = (BuildContext context) => TimetablePreview();
+        break;
+      case kSelectedCourses:
+        builder = (BuildContext context) => SelectedCoursesScreen();
         break;
 
       default:

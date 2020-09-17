@@ -9,6 +9,7 @@ const kWlcomeViewRoute = '/WelcomingView';
 const kWlcomeScreenRoute = '/WelcomingView';
 const kScheduleRoute = '/schedule_screen';
 const kScheduleDetailsRoute = '/schedule_detail';
+const kSelectedCourses = '/selected_courses';
 const kClubRoute = '/club_info';
 const kEventRoute = '/event_info';
 const kChoseScreenRoute = '/ChoseScreen';

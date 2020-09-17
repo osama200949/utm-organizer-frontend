@@ -77,19 +77,47 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                             //   color: Colors.white,
                             //   size: 35,
                             // ),
-                            trailing: 
-                            IconButton(icon: 
-                             Icon(
-                              FontAwesomeIcons.calendarAlt,
-                              color: Colors.white,
-                              size: 35,
+                            trailing: InkWell(
+                              onTap: () => Navigator.pushNamed(
+                                  context, kSelectedCourses),
+                              child: Container(
+                                width: 130,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.white.withOpacity(0.3),
+                                        blurRadius: 0.0, // soften the shadow
+                                        spreadRadius: 0.5, //extend the shadow
+                                        offset: Offset(
+                                          2.0, // Move to right 10  horizontally
+                                          4.0, // Move to bottom 10 Vertically
+                                        ),
+                                      )
+                                    ],
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(25.0)),
+                                child: Center(
+                                  child: Text(
+                                    'Selected Courses',
+                                    style: TextStyle(
+                                        fontSize: 14, color: kRead_primary),
+                                  ),
+                                ),
+                              ),
                             ),
-                            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => SelectedCoursesScreen(),));},
-                            )
+                            // IconButton(icon:
+                            //  Icon(
+                            //   FontAwesomeIcons.calendarAlt,
+                            //   color: Colors.white,
+                            //   size: 35,
+                            // ),
+                            // onPressed: ()=>Navigator.pushNamed(context,kSelectedCourses),
+                            // ),
                           ),
                         ),
                       ),
-                      //Bottom Area
+                      //! Bottom Area
                       Expanded(
                         flex: 6,
                         child: Container(

@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/components/appbar_widget.dart';
+import 'package:utm_orgnization/components/canvas/Canva_home.dart';
 import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/utils/constants.dart';
 
 class SelectedCoursesScreen extends StatefulWidget {
   @override
@@ -14,34 +18,128 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
   Widget build(BuildContext context) {
     final data = Provider.of<ScheduleData>(context);
     return Scaffold(
-      appBar: TopAppBar(
-        appBar: AppBar(),
-      ),
-      //  body: Container(
-      //    color: Colors.green,
-      //  ),
-      body: data.selectedCourses.length!=0 ? ListView.builder(
-          itemCount: data.selectedCourses.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(data.selectedCourses[index].name),
-              // title:Text( 'data.selectedCourses[index].name'),
-              trailing: IconButton(
-                icon: Icon(
-                  Icons.delete,
-                  color: Colors.red,
-                  size: 32,
-                ),
-                onPressed: (){
-                  data.removeCourse(data.selectedCourses[index]);
-                  // setState(() {
-                    
-                  // });
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        leading: null,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, kScheduleDetailsRoute);
                 },
+                icon: Icon(FontAwesomeIcons.arrowLeft)),
+            SvgPicture.asset('images/logos/logo-mini.svg'),
+          ],
+        ),
+      ),
+      body: Container(
+        child: Stack(
+          children: <Widget>[
+            CanvasRed(),
+            CanvasBlack(),
+            CanvasOrange(),
+            SafeArea(
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30, bottom: 10),
+                      child: ListTile(
+                          leading: Text(
+                            'Selected Courses',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontFamily: 'Muli',
+                              color: Colors.white,
+                            ),
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(
+                              FontAwesomeIcons.edit,
+                              color: Colors.white,
+                              size: 32,
+                            ),
+                            // onPressed: () {
+                            //   Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             SelectedCoursesScreen(),
+                            //       ));
+                            // },
+                          )),
+                    ),
+                  ),
+                  //! Bottom Area
+                  Expanded(
+                    flex: 6,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0)),
+                      ),
+                      child: SingleChildScrollView(
+                          child: data.selectedCourses.length != 0
+                              ? Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height,
+                                      child: ListView.builder(
+                                        padding: EdgeInsets.only(top: 15,left: 5),
+                                          itemCount:
+                                              data.selectedCourses.length,
+                                          itemBuilder: (context, index) {
+                                            return ListTile(
+                                              title: Text(data
+                                                  .selectedCourses[index].name,style: TextStyle(fontSize: 16),),
+                                              // title:Text( 'data.selectedCourses[index].name'),
+                                              trailing: IconButton(
+                                                icon: Icon(
+                                                  Icons.delete,
+                                                  color: Colors.red,
+                                                  size: 32,
+                                                ),
+                                                onPressed: () {
+                                                  data.removeCourse(data
+                                                      .selectedCourses[index]);
+                                                  // setState(() {
+
+                                                  // });
+                                                },
+                                              ),
+                                            );
+                                          }),
+                                    ),
+                                  ],
+                                )
+                              : Container(
+                                  height: 500,
+                                  child: Center(
+                                    child: Text(
+                                      'Nothing selected yet',
+                                      style: TextStyle(
+                                          fontSize: 32, color: Colors.black),
+                                    ),
+                                  ),
+                                )),
+                    ),
+                  ),
+                ],
               ),
-            );
-          }):
-          Center(child: Text('Nothing selected yet',style: TextStyle(fontSize: 32,color: Colors.black),))
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
