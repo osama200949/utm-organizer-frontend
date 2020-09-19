@@ -95,13 +95,16 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                                       height:
                                           MediaQuery.of(context).size.height,
                                       child: ListView.builder(
-                                        padding: EdgeInsets.only(top: 15,left: 5),
+                                          padding:
+                                              EdgeInsets.only(top: 15, left: 5),
                                           itemCount:
                                               data.selectedCourses.length,
                                           itemBuilder: (context, index) {
                                             return ListTile(
-                                              title: Text(data
-                                                  .selectedCourses[index].name,style: TextStyle(fontSize: 16),),
+                                              title: Text(
+                                                '${data.selectedCourses[index].name} with\n${data.selectedCourses[index].sections[0].doctor.name}\n(section: ${data.selectedCourses[index].sections[0].number})',
+                                                style: TextStyle(fontSize: 16),
+                                              ),
                                               trailing: IconButton(
                                                 icon: Icon(
                                                   Icons.delete,

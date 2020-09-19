@@ -4,20 +4,23 @@ class Class {
   DateTime startTime;
   DateTime endTime;
   String day;
+  String venue;
 
-  Class({this.startTime, this.endTime, this.day});
+  Class({this.startTime, this.endTime, this.day,this.venue});
 
   Class.fromJson(Map<String, dynamic> json)
       : this(
           startTime: DateTime.parse(json["startTime"]),
           endTime: DateTime.parse(json["endTime"]),
           day: json["day"],
+          venue: json["venue"] !=null ? json["venue"] : "Not specified",
         );
 
   Map<String, dynamic> toJson() => {
         'startTime': startTime.toIso8601String(),
         'endTime': endTime.toIso8601String(),
-        'day': day
+        'day': day,
+        'venue': venue
       };
 }
 
