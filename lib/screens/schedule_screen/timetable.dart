@@ -80,7 +80,7 @@ class _TimeTableState extends State<Timetable> {
                 // Provider.of<ScheduleData>(context,listen: false).addSelectedCoursesToDatabase();
 
                 Navigator.pushNamedAndRemoveUntil(
-                    context, kMainNv, (route) => false);
+                    context, kCalenderRoute, (route) => false);
               })),
     );
   }

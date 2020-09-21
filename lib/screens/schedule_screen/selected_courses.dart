@@ -85,58 +85,55 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                             topLeft: Radius.circular(20.0),
                             topRight: Radius.circular(20.0)),
                       ),
-                      child: SingleChildScrollView(
-                          child: data.selectedCourses.length != 0
-                              ? Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: [
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height -
-                                              180,
-                                      child: ListView.separated(
-                                          separatorBuilder: (context, index) =>
-                                              Divider(
-                                                thickness: 2,
-                                              ),
-                                          shrinkWrap: true,
-                                          padding: EdgeInsets.only(
-                                              top: 15, left: 5, bottom: 10),
-                                          itemCount:
-                                              data.selectedCourses.length,
-                                          itemBuilder: (context, index) {
-                                            return ListTile(
-                                              title: Text(
-                                                '${data.selectedCourses[index].name} with\n${data.selectedCourses[index].sections[0].doctor.name}\n(section: ${data.selectedCourses[index].sections[0].number})',
-                                                style: TextStyle(fontSize: 16),
-                                              ),
-                                              trailing: IconButton(
-                                                icon: Icon(
-                                                  Icons.delete,
-                                                  color: Colors.red,
-                                                  size: 32,
-                                                ),
-                                                onPressed: () {
-                                                  data.removeCourse(data
-                                                      .selectedCourses[index]);
-                                                },
-                                              ),
-                                            );
-                                          }),
-                                    ),
-                                  ],
-                                )
-                              : Container(
-                                  height: 500,
-                                  child: Center(
-                                    child: Text(
-                                      'Nothing selected yet',
-                                      style: TextStyle(
-                                          fontSize: 32, color: Colors.black),
-                                    ),
-                                  ),
-                                )),
+                      child: data.selectedCourses.length != 0
+                          ? Column(
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.stretch,
+                              children: [
+                                Expanded(
+                                  child: ListView.separated(
+
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            thickness: 2,
+                                          ),
+                                      shrinkWrap: true,
+                                      padding: EdgeInsets.only(
+                                          top: 15, left: 5, bottom: 10),
+                                      itemCount:
+                                          data.selectedCourses.length,
+                                      itemBuilder: (context, index) {
+                                        return ListTile(
+                                          title: Text(
+                                            '${data.selectedCourses[index].name} with\n${data.selectedCourses[index].sections[0].doctor.name}\n(section: ${data.selectedCourses[index].sections[0].number})',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          trailing: IconButton(
+                                            icon: Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
+                                              size: 32,
+                                            ),
+                                            onPressed: () {
+                                              data.removeCourse(data
+                                                  .selectedCourses[index]);
+                                            },
+                                          ),
+                                        );
+                                      }),
+                                ),
+                              ],
+                            )
+                          : Container(
+                              height: 500,
+                              child: Center(
+                                child: Text(
+                                  'Nothing selected yet',
+                                  style: TextStyle(
+                                      fontSize: 32, color: Colors.black),
+                                ),
+                              ),
+                            ),
                     ),
                   ),
                 ],

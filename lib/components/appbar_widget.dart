@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:utm_orgnization/models/provider/schedule_data.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -30,15 +32,26 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
             ? FlatButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, kTimetablePreview),
-                child: SvgPicture.asset(
-                  'images/icons/timetable_calendar.svg',
-                  color: Colors.white,
-                  fit: BoxFit.cover,
-                ),
-              )
+                child:
+                    Provider.of<ScheduleData>(context).selectedCourses.length >
+                            0
+                        ? Image.asset(
+                            // When there is selected courses > 0
+                            'images/icons/timetable_is_updated.png',
+                            fit: BoxFit.contain,
+                            width: 32,
+                            height: 32,
+                          )
+                        : SvgPicture.asset(
+                            // When there is no courses == 0
+                            'images/icons/timetable_is_updated.svg',
+                            color: Colors.white,
+                            fit: BoxFit.cover,
+                          ))
             : FlatButton(
                 onPressed: () async => showDialogue(context),
                 child: SvgPicture.asset(
+                  // 'images/icons/timetable_is_updated.svg',
                   'images/icons/dashborad.svg',
                 ),
               ),
