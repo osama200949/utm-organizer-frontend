@@ -119,133 +119,153 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                                 topLeft: Radius.circular(20.0),
                                 topRight: Radius.circular(20.0)),
                           ),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15, top: 30, bottom: 5),
-                                  child: Text(
-                                    'Year',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontFamily: 'Muli'),
-                                  ),
-                                ),
-                                // Spacer(flex: 1,),
-                                SizedBox(
-                                  height: 50,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: data.years.length,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: ChoiceChip(
-                                          backgroundColor: Color(0xffF9F6F7),
-                                          label: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 10.0),
-                                            child: Text("${data.years[index]}"),
-                                          ),
-                                          selectedColor: Color(0xffD63447),
-                                          selected: year == index,
-                                          labelStyle: TextStyle(
-                                              fontSize: 15,
-                                              color: year == index
-                                                  ? Colors.white
-                                                  : Colors.black),
-                                          onSelected: (selected) {
-                                            setState(() {
-                                              year = index;
-                                              if (index == 0)
-                                                data.currentYearindex = -1;
-                                              else
-                                                data.currentYearindex =
-                                                    year - 1;
-                                            });
-                                          },
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15, top: 10, bottom: 5),
-                                  child: Text(
-                                    'Others',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontFamily: 'Muli'),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 8, bottom: 10),
-                                  child: SizedBox(
-                                    height: 55,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              //! Year area
 
-                                    //! Others......................
-
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: data.others.length,
-                                      itemBuilder: (context, index) {
-                                        return Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: ChoiceChip(
-                                            backgroundColor: Color(0xffF9F6F7),
-                                            label: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 10.0,
-                                                      vertical: 5.0),
-                                              child:
-                                                  Text("${data.others[index]}"),
-                                            ),
-                                            selectedColor: Color(0xffD63447),
-                                            selected: others == index,
-                                            labelStyle: TextStyle(
-                                                fontSize: 15,
-                                                color: others == index
-                                                    ? Colors.white
-                                                    : Colors.black),
-                                            onSelected: (selected) {
-                                              setState(() {
-                                                others = index;
-                                                data.othersIndex = others;
-                                              });
-                                            },
-                                          ),
-                                        );
-                                      },
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 15, top: 25, bottom: 5),
+                                      child: Text(
+                                        'Year',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                            fontFamily: 'Muli'),
+                                      ),
                                     ),
+                                    SizedBox(
+                                      height: 50,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: data.years.length,
+                                        padding: EdgeInsets.only(left: 15.0),
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 8.0),
+                                            child: ChoiceChip(
+                                              backgroundColor:
+                                                  Color(0xffF9F6F7),
+                                              label: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10.0),
+                                                child: Text(
+                                                    "${data.years[index]}"),
+                                              ),
+                                              selectedColor: Color(0xffD63447),
+                                              selected: year == index,
+                                              labelStyle: TextStyle(
+                                                  fontSize: 15,
+                                                  color: year == index
+                                                      ? Colors.white
+                                                      : Colors.black),
+                                              onSelected: (selected) {
+                                                setState(() {
+                                                  year = index;
+                                                  if (index == 0)
+                                                    data.currentYearindex = -1;
+                                                  else
+                                                    data.currentYearindex =
+                                                        year - 1;
+                                                });
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 10),
 
-                                    //! COURSES AREA......................
-                                  ),
+                              //! Others......................
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 15, bottom: 5),
+                                      child: Text(
+                                        'Others',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                            fontFamily: 'Muli'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 55,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: data.others.length,
+                                        padding: EdgeInsets.only(left: 15.0),
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                            padding:
+                                                const EdgeInsets.only(right: 8),
+                                            child: ChoiceChip(
+                                              backgroundColor:
+                                                  Color(0xffF9F6F7),
+                                              label: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10.0,
+                                                        vertical: 5.0),
+                                                child: Text(
+                                                    "${data.others[index]}"),
+                                              ),
+                                              selectedColor: Color(0xffD63447),
+                                              selected: others == index,
+                                              labelStyle: TextStyle(
+                                                  fontSize: 15,
+                                                  color: others == index
+                                                      ? Colors.white
+                                                      : Colors.black),
+                                              onSelected: (selected) {
+                                                setState(() {
+                                                  others = index;
+                                                  data.othersIndex = others;
+                                                });
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                // SizedBox(
-                                //   height: 20,
-                                // ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15, top: 10, bottom: 15),
-                                  child: Text(
-                                    '${data.others[others]}',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontFamily: 'Muli'),
-                                  ),
-                                ),
-                                CoursesBottomSheet(),
-                              ], // end of the white area
-                            ),
+                              ),
+
+                              //! COURSES AREA......................
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 15, bottom: 5),
+                                      child: Text(
+                                        '${data.others[others]}',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                            fontFamily: 'Muli'),
+                                      ),
+                                    ),
+                                  CoursesListView(),
+                                ],
+                              ),
+                            ], // end of the white area
                           ),
                         ),
                       ),
