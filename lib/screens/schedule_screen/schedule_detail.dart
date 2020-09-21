@@ -125,6 +125,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                               //! Year area
 
                               Expanded(
+                                flex: 2,
                                 child: Column(
                                   crossAxisAlignment:
                                       CrossAxisAlignment.stretch,
@@ -189,13 +190,14 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
 
                               //! Others......................
                               Expanded(
+                                flex: 2,
                                 child: Column(
                                   crossAxisAlignment:
                                       CrossAxisAlignment.stretch,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 15, bottom: 5),
+                                      padding:
+                                          EdgeInsets.only(left: 15, bottom: 5),
                                       child: Text(
                                         'Others',
                                         style: TextStyle(
@@ -248,10 +250,13 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                               ),
 
                               //! COURSES AREA......................
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Padding(
+                              Expanded(
+                                flex: 7,
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Padding(
                                       padding:
                                           EdgeInsets.only(left: 15, bottom: 5),
                                       child: Text(
@@ -262,8 +267,9 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                                             fontFamily: 'Muli'),
                                       ),
                                     ),
-                                  CoursesListView(),
-                                ],
+                                    CoursesListView(),
+                                  ],
+                                ),
                               ),
                             ], // end of the white area
                           ),

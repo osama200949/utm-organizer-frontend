@@ -13,14 +13,12 @@ class _MainBottomSheetState extends State<CoursesListView> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ScheduleData>(builder: (context, data, _) {
-      return SizedBox(
-        // height: 340,
-        height: MediaQuery.of(context).size.height *0.45,
-
+      return Expanded(
         //! Recommended Courses......................
 
         child: data.getCoursesLength() > 0
             ? ListView.builder(
+              shrinkWrap: true,
               padding: EdgeInsets.all(15),
                 itemCount: data.getCoursesLength(),
                 scrollDirection: Axis.vertical,
