@@ -24,7 +24,15 @@ class ScheduleData extends ChangeNotifier {
     Colors.purple,
     Colors.deepOrange,
     Colors.black,
-    Colors.blueAccent
+    Colors.blueAccent,
+    Colors.pink,
+    Colors.green,
+    Colors.orangeAccent,
+    Colors.grey,
+    Colors.blue,
+    Colors.amber,
+    Colors.greenAccent,
+    Colors.lightBlueAccent
   ];
 
   List<ClassInfo> classes = [];

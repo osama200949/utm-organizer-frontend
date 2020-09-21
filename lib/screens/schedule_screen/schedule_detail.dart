@@ -407,16 +407,16 @@ void _showDialogTooManyClashes(mcontext, Function clearAll) {
                   });
                 },
               ),
-              FlatButton(
-                child: Text("Clear all courses"),
-                onPressed: () {
-                  state(() {
-                    _showConfirmationDialog(mcontext, clearAll);
-                  });
-                  // clearAll();
-                  // Navigator.pop(context);
-                },
-              ),
+              // FlatButton(
+              //   child: Text("Clear all courses"),
+              //   onPressed: () {
+              //     state(() {
+              //       _showConfirmationDialog(mcontext, clearAll);
+              //     });
+              //     // clearAll();
+              //     // Navigator.pop(context);
+              //   },
+              // ),
             ],
           );
         },

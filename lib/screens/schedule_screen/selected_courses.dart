@@ -93,10 +93,16 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                                   children: [
                                     SizedBox(
                                       height:
-                                          MediaQuery.of(context).size.height,
-                                      child: ListView.builder(
-                                          padding:
-                                              EdgeInsets.only(top: 15, left: 5),
+                                          MediaQuery.of(context).size.height -
+                                              180,
+                                      child: ListView.separated(
+                                          separatorBuilder: (context, index) =>
+                                              Divider(
+                                                thickness: 2,
+                                              ),
+                                          shrinkWrap: true,
+                                          padding: EdgeInsets.only(
+                                              top: 15, left: 5, bottom: 10),
                                           itemCount:
                                               data.selectedCourses.length,
                                           itemBuilder: (context, index) {
