@@ -113,6 +113,8 @@ class MeetingDataSource extends CalendarDataSource {
 
   @override
   Color getColor(int index) {
-    return appointments[index].bgColor;
+    return appointments[index].bgColor != null
+        ? appointments[index].bgColor
+        : Colors.red;
   }
 }
