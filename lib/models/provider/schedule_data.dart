@@ -4,20 +4,22 @@ import 'package:utm_orgnization/models/schedule_model/course.dart';
 import 'package:utm_orgnization/models/schedule_model/date_converter_helper.dart';
 import 'package:utm_orgnization/models/schedule_model/major.dart';
 import 'package:utm_orgnization/models/schedule_model/major_box.dart';
-import 'package:utm_orgnization/models/schedule_model/section.dart';
 import 'package:utm_orgnization/models/schedule_model/semester.dart';
 import 'package:utm_orgnization/models/schedule_model/year.dart';
+import 'package:utm_orgnization/models/user.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/services/schedule_service.dart';
 
 class ScheduleData extends ChangeNotifier {
   final dataService = service<ScheduleService>();
 
-  void undo(int section) {
-    selectedCourses[currentCourse].sections[section].isPressed = false;
-    removeCourse(selectedCourses[currentCourse]);
-    // isClash();
-  }
+  List<String> yearsText = [
+    "All",
+    "Fisrt",
+    "Second",
+    "Third",
+    "Fourth",
+  ];
 
   List<Color> c = [
     Colors.red,
@@ -35,7 +37,44 @@ class ScheduleData extends ChangeNotifier {
     Colors.lightBlueAccent
   ];
 
+  List<MajorBox> majorBox = [];
+
+  int currentMajor = 0;
+  int currentYearindex = -1;
+  int currentSem = 0;
+  int currentCourse;
+  int othersIndex = 0;
+  int currentSection = -1;
+  List<Course> _allSem = [];
+  Year currentYear;
+  List<int> numbers = [0, 1, 2, 3, 4, 5, 6];
+
+  //! FETCH DATA FROM API
+  List<Year> yearData;
+  List<Major> majors;
+  List<Course> allCourseData = [];
   List<ClassInfo> classes = [];
+
+  User _user;
+  get user => _user;
+  set user(User newUser) {
+    _user = newUser;
+    setUserSelectedCourses();
+    notifyListeners();
+  }
+
+  setUserSelectedCourses() {}
+
+  Future<void> setDataFromDatabase() async {
+    majors = await dataService.getMajors();
+
+    selectedCourses = await dataService.getSelectedCourses();
+    yearData = majors[currentMajor].years;
+
+    setMajorBox();
+
+    notifyListeners();
+  }
 
   List<ClassInfo> get getClasses => classes;
 
@@ -70,7 +109,7 @@ class ScheduleData extends ChangeNotifier {
 
   final today = DateTime.now();
 
-  Future<void> setDataSource() {
+  void setDataSource() {
     classes = [];
     for (int i = 0; i < selectedCourses.length; i++)
       for (int j = 0;
@@ -107,7 +146,7 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clearAll() async {
+  Future<void> clearAll() async {
     await dataService.removeAllSelectedCourse();
     selectedCourses.map((course) {
       course.sections.map((section) {
@@ -124,31 +163,6 @@ class ScheduleData extends ChangeNotifier {
     // getData();
     notifyListeners();
   }
-
-  //! FETCH DATA FROM API
-  List<Year> yearData;
-  List<Major> majors;
-  List<Course> allCourseData = [];
-
-  Future<void> getData() async {
-    majors = await dataService.getMajors();
-
-    selectedCourses = await dataService.getSelectedCourses();
-    yearData = majors[currentMajor].years;
-
-    setMajorBox();
-
-    notifyListeners();
-    // return majors;
-  }
-
-  List<String> years = [
-    "All",
-    "Fisrt",
-    "Second",
-    "Third",
-    "Fourth",
-  ];
 
   List<Course> getAllData() {
     allCourseData.clear();
@@ -188,7 +202,6 @@ class ScheduleData extends ChangeNotifier {
   }
 
   List<Course> selectedCourses = [];
-
 
   void addCourse(Course c) async {
     bool present = false;
@@ -259,20 +272,11 @@ class ScheduleData extends ChangeNotifier {
     return selectedCourses[0].name;
   }
 
-  int currentMajor = 0;
-  int currentYearindex = -1;
-  int currentSem = 0;
-  int currentCourse;
-  int othersIndex = 0;
-  int currentSection = -1;
-
   List<String> others = [
     "Recommended Courses",
     "Co-Curriculum",
     "Language Courses"
   ];
-
-  List<int> numbers = [0, 1, 2, 3, 4, 5, 6];
 
   int getCoursesLength() {
     if (currentYearindex == -1)
@@ -281,9 +285,6 @@ class ScheduleData extends ChangeNotifier {
       // return yearData[currentYearindex].semesters[currentSem].courses.length;
       return getCourses(currentYearindex).length;
   }
-
-  List<Course> _allSem = [];
-  Year currentYear;
 
   List<Course> getCourses(int yearIndex) {
     _allSem.clear();
@@ -342,6 +343,21 @@ class ScheduleData extends ChangeNotifier {
     });
     // dataService.addSelectedCourse(selectedCourses);
   }
+
+  void setMajorBox() {
+    majorBox.clear();
+    for (int i = 0; i < majors.length; i++) {
+      majorBox.add(
+        MajorBox(
+          index: i,
+          boxColor: Color(0xffF5F5F5),
+          boxText: majors[i].course,
+          textColor: Colors.black,
+        ),
+      );
+    }
+  }
+} //?end
 
 //! ARCHIEVE
 
@@ -443,47 +459,30 @@ class ScheduleData extends ChangeNotifier {
 //   print(currentSem);
 // }
 
-  List<MajorBox> majorBox = [
-    // MajorBox(
-    //   index: 0,
-    //   boxColor: Color(0xffF5F5F5),
-    //   boxText: 'Network & Security',
-    //   textColor: Colors.black,
-    // ),
-    // MajorBox(
-    //   index: 1,
-    //   boxColor: Color(0xffD63447),
-    //   boxText: 'Software Engineering',
-    //   textColor: Colors.white,
-    // ),
-    // MajorBox(
-    //   index: 2,
-    //   boxColor: Color(0xffF5F5F5),
-    //   boxText: 'Graphics & Multimedia',
-    //   textColor: Colors.black,
-    // ),
-    // MajorBox(
-    //   index: 3,
-    //   boxColor: Color(0xffF5F5F5),
-    //   boxText: 'Data Engineering',
-    //   textColor: Colors.black,
-    // ),
-  ];
-
-  void setMajorBox() {
-    majorBox.clear();
-    for (int i = 0; i < majors.length; i++) {
-      majorBox.add(
-        MajorBox(
-          index: i,
-          boxColor: Color(0xffF5F5F5),
-          boxText: majors[i].course,
-          textColor: Colors.black,
-        ),
-      );
-    }
-  }
-} //?end
+// MajorBox(
+//   index: 0,
+//   boxColor: Color(0xffF5F5F5),
+//   boxText: 'Network & Security',
+//   textColor: Colors.black,
+// ),
+// MajorBox(
+//   index: 1,
+//   boxColor: Color(0xffD63447),
+//   boxText: 'Software Engineering',
+//   textColor: Colors.white,
+// ),
+// MajorBox(
+//   index: 2,
+//   boxColor: Color(0xffF5F5F5),
+//   boxText: 'Graphics & Multimedia',
+//   textColor: Colors.black,
+// ),
+// MajorBox(
+//   index: 3,
+//   boxColor: Color(0xffF5F5F5),
+//   boxText: 'Data Engineering',
+//   textColor: Colors.black,
+// ),
 
 //today.weekday = Monday = 1
 //courseDay = Tuesday = 2
@@ -506,4 +505,10 @@ class ScheduleData extends ChangeNotifier {
 // } else {
 //   print("schedule_data.dart: All conditions false: day is set to THURSDAY");
 //   return days['Thursday'];
+// }
+
+// void undo(int section) {
+//   selectedCourses[currentCourse].sections[section].isPressed = false;
+//   removeCourse(selectedCourses[currentCourse]);
+//   // isClash();
 // }

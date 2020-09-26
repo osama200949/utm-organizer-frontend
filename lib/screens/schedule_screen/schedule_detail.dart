@@ -145,7 +145,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                                       height: 50,
                                       child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
-                                        itemCount: data.years.length,
+                                        itemCount: data.yearsText.length,
                                         padding: EdgeInsets.only(left: 15.0),
                                         itemBuilder: (context, index) {
                                           return Padding(
@@ -159,7 +159,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                                                     const EdgeInsets.symmetric(
                                                         horizontal: 10.0),
                                                 child: Text(
-                                                    "${data.years[index]}"),
+                                                    "${data.yearsText[index]}"),
                                               ),
                                               selectedColor: Color(0xffD63447),
                                               selected: year == index,

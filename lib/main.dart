@@ -69,7 +69,7 @@ class _AppState extends State<App> {
           create: (_) => ClubData(),
         ),
         ChangeNotifierProvider(
-          create: (_) => ScheduleData()..getData(),
+          create: (_) => ScheduleData()..setDataFromDatabase(),
         ),
       ],
       child: AppView(navigatorKey: navigatorKey, widget: widget),

@@ -1,4 +1,3 @@
-
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 import 'package:utm_orgnization/models/schedule_model/major.dart';
 import 'package:utm_orgnization/services/rest/rest_service.dart';
@@ -6,8 +5,8 @@ import 'package:utm_orgnization/services/rest/rest_service.dart';
 import '../dependencies.dart';
 
 class ScheduleService {
-
   final rest = service<RestService>();
+  Map<String,dynamic> hashMap = Map();
 
   Future<List<Major>> getMajors() async {
     // print('Fetching data from $url');
@@ -25,17 +24,15 @@ class ScheduleService {
   }
 
   Future<Course> addSelectedCourse(Course c) async {
-    final response = await rest.post('majors/selectedCourses', data: c.toJson());
+    final response =
+        await rest.post('majors/selectedCourses', data: c.toJson());
 
     return Course.fromJson(response);
   }
 
   Future<List<Course>> getSelectedCourses() async {
-    // print('Fetching data from $url/majors/selectedCourses');
-
+    
     dynamic response = await rest.get('majors/selectedCourses');
-
-    // response = await get(endpoint: 'selectedCourses');
     print(response);
 
     if (response != null) {
@@ -50,8 +47,8 @@ class ScheduleService {
   }
 
   Future<Course> updateSelectedCourse(Course c) async {
-    final response = await rest.patch(
-        'majors/selectedCourses/${c.id}',data: {"sections": c.sections});
+    final response = await rest.patch('majors/selectedCourses/${c.id}',
+        data: {"sections": c.sections});
 
     print("ScheduleService after update:\n $response");
 

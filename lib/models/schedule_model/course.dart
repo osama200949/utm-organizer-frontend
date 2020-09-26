@@ -2,19 +2,18 @@ import 'package:utm_orgnization/models/schedule_model/section.dart';
 
 class Course {
   final String id;
+  final String userID;
   final String type;
   final String code;
   final String name;
   List<Section> sections;
 
-  Course({this.id = '', this.type, this.name, this.sections, this.code}){
-    this.id;
-    print(this.id);
-  }
+  Course({this.id = '',this.userID, this.type, this.name, this.sections, this.code});
 
   Course.fromJson(Map<String, dynamic> json)
       : this(
             id: json['id'] != null ? json['id'] : '',
+            userID: json['userID'] ,
             type: json['type'],
             code: json["code"],
             name: json["name"],
@@ -24,16 +23,9 @@ class Course {
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        'userID': userID,
         'code': code,
         'name': name,
         'sections': sections.map((s) => s.toJson()).toList()
       };
 }
-
-// class Course {
-//   final String name;
-//   final String code;
-//   Map sections;
-
-//   Course({this.name, this.sections, this.code});
-// }
