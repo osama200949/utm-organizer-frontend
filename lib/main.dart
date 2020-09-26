@@ -65,12 +65,16 @@ class _AppState extends State<App> {
           create: (context) => MeetingData(),
           update: (context, user, meetingNotifier) => meetingNotifier..user = user,
         ),
+        ChangeNotifierProxyProvider<User,ScheduleData>(
+          create: (context) => ScheduleData(),
+          update: (context, user, scheduleNotifier) => scheduleNotifier..user = user,
+        ),
         ChangeNotifierProvider(
           create: (_) => ClubData(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => ScheduleData()..setDataFromDatabase(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (_) => ScheduleData()..setDataFromDatabase(),
+        // ),
       ],
       child: AppView(navigatorKey: navigatorKey, widget: widget),
     );

@@ -59,6 +59,7 @@ class ScheduleData extends ChangeNotifier {
   get user => _user;
   set user(User newUser) {
     _user = newUser;
+    setDataFromDatabase();
     setUserSelectedCourses();
     notifyListeners();
   }
