@@ -13,10 +13,6 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   _getBoolFromSharedPref() async {
-    /*
-  Author Credit :Ibrahim Katari
-    _getBoolFromSharedPref
-  */
     final prefs = await SharedPreferences.getInstance();
     final isFristTime = prefs.getBool('FristTime');
 
