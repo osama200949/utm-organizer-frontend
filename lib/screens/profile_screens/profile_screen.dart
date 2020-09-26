@@ -26,11 +26,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           appBar: AppBar(),
         ),
         body: Consumer<User>(builder: (_, user, __) {
-          if (user == null) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+          // if (user == null) {
+          //   return Center(
+              
+          //     child: CircularProgressIndicator(),
+          //   );
+          // }
           return SingleChildScrollView(
             child: Column(
               children: <Widget>[
@@ -220,7 +221,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => service<AuthServices>().signOut(),
+                        onTap: () async{
+                        await service<AuthServices>().signOut();
+                        Navigator.pushNamedAndRemoveUntil(context, kSignInRoute, (route) => false);
+                        },
                         child: Container(
                           color: Colors.black12,
                           padding: EdgeInsets.symmetric(vertical: 7),

@@ -227,6 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               gender: isCliked,
                             );
                             print(user.data);
+                            Navigator.pushReplacementNamed(context, kSignInRoute);
                           },
                           child: Align(
                             alignment: Alignment.centerRight,
