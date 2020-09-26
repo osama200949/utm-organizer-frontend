@@ -11,7 +11,7 @@ import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/services/schedule_service.dart';
 
 class ScheduleData extends ChangeNotifier {
-  final dataService = service<ScheduleService>();
+  final secheduleService = service<ScheduleService>();
 
   List<String> yearsText = [
     "All",
@@ -37,6 +37,12 @@ class ScheduleData extends ChangeNotifier {
     Colors.lightBlueAccent
   ];
 
+  List<String> others = [
+    "Recommended Courses",
+    "Co-Curriculum",
+    "Language Courses"
+  ];
+
   List<MajorBox> majorBox = [];
 
   int currentMajor = 0;
@@ -56,23 +62,24 @@ class ScheduleData extends ChangeNotifier {
   List<Course> allCourseData = [];
   List<ClassInfo> classes = [];
 
-
   User _user;
   get user => _user;
   set user(User newUser) {
     _user = newUser;
     setDataFromDatabase();
-    setUserSelectedCourses();
+    // setUserSelectedCourses();
     notifyListeners();
   }
 
   // setUserSelectedCourses() {}
-  
 
   Future<void> setDataFromDatabase() async {
-    majors = await dataService.getMajors();
+    if (_user == null) return;
+    secheduleService.userID = _user.uid;
 
-    selectedCourses = await dataService.getSelectedCourses();
+    majors = await secheduleService.getMajors();
+
+    selectedCourses = await secheduleService.getSelectedCourses();
     yearData = majors[currentMajor].years;
 
     setMajorBox();
@@ -80,24 +87,24 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> setUserSelectedCourses() async {
-    if (_user == null) return;
-    dataService.userID = _user.uid;
-    final courses = await dataService.getUserSelectedCourses();
+  // Future<void> setUserSelectedCourses() async {
+  //   if (_user == null) return;
+  //   secheduleService.userID = _user.uid;
+  //   final courses = await secheduleService.getUserSelectedCourses();
 
-    bool isExist = true;
-    courses.forEach((dCourse) {
-      selectedCourses.forEach((sCourse) {
-        if (dCourse.code == sCourse.code) isExist = false;
-      });
-      if (!isExist) selectedCourses.add(dCourse);
-      isExist = true;
-    });
+  //   bool isExist = true;
+  //   courses.forEach((dCourse) {
+  //     selectedCourses.forEach((sCourse) {
+  //       if (dCourse.code == sCourse.code) isExist = false;
+  //     });
+  //     if (!isExist) selectedCourses.add(dCourse);
+  //     isExist = true;
+  //   });
 
-    print('selected courses from server');
-    print(courses);
-    notifyListeners();
-  }
+  //   print('selected courses from server');
+  //   print(courses);
+  //   notifyListeners();
+  // }
 
   List<ClassInfo> get getClasses => classes;
 
@@ -169,7 +176,7 @@ class ScheduleData extends ChangeNotifier {
   }
 
   Future<void> clearAll() async {
-    await dataService.removeAllSelectedCourse();
+    await secheduleService.removeAllSelectedCourse();
     selectedCourses.map((course) {
       course.sections.map((section) {
         if (section.isPressed) {
@@ -226,8 +233,11 @@ class ScheduleData extends ChangeNotifier {
   List<Course> selectedCourses = [];
 
   void addCourse(Course c) async {
+    c.userID = _user.uid;
     bool present = false;
     Course cs = Course(
+      userID: c.userID,
+      type: c.type,
       name: c.name,
       code: c.code,
       sections: [c.sections[currentSection]],
@@ -240,7 +250,7 @@ class ScheduleData extends ChangeNotifier {
     }
 
     if (!present) {
-      // final result = await dataService.addSelectedCourse(cs);
+      await secheduleService.addSelectedCourse(cs);
       selectedCourses.add(cs);
     } else
       updateCourse(c);
@@ -248,26 +258,11 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void unselect(Course c) {
-  //   for (int i = 0; i < selectedCourses.length; i++) {
-  //     if (c.code == selectedCourses[i].code) {
-  //       for (int j = 0; j < selectedCourses[i].sections.length; j++) {
-  //         if (c.sections[0].number == selectedCourses[i].sections[j].number) {
-  //           selectedCourses[i].sections[j].isPressed = false;
-  //           break;
-  //         }
-  //       }
-  //       break;
-  //     }
-  //   }
-  //   removeCourse(c);
-  // }
-
   void updateCourse(Course c) async {
     for (int i = 0; i < selectedCourses.length; i++) {
       if (c.code == selectedCourses[i].code) {
         selectedCourses[i].sections = [c.sections[currentSection]];
-        // await dataService.updateSelectedCourse(selectedCourses[i]);
+        await secheduleService.updateSelectedCourse(selectedCourses[i]);
       }
     }
   }
@@ -282,7 +277,7 @@ class ScheduleData extends ChangeNotifier {
       }
     }
 
-    // await dataService.removeSelectedCourse(selectedCourses[i]);
+    // await secheduleService.removeSelectedCourse(selectedCourses[i]);
     notifyListeners();
   }
 
@@ -293,12 +288,6 @@ class ScheduleData extends ChangeNotifier {
   String getSelectedCourses() {
     return selectedCourses[0].name;
   }
-
-  List<String> others = [
-    "Recommended Courses",
-    "Co-Curriculum",
-    "Language Courses"
-  ];
 
   int getCoursesLength() {
     if (currentYearindex == -1)
@@ -358,13 +347,13 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addSelectedCoursesToDatabase() async {
-    selectedCourses.forEach((element) {
-      // dataService.updateSelectedCourse(element);
-      dataService.addSelectedCourse(element);
-    });
-    // dataService.addSelectedCourse(selectedCourses);
-  }
+  // Future<void> addSelectedCoursesToDatabase() async {
+  //   selectedCourses.forEach((element) {
+  //     // secheduleService.updateSelectedCourse(element);
+  //     secheduleService.addSelectedCourse(element);
+  //   });
+  //   // secheduleService.addSelectedCourse(selectedCourses);
+  // }
 
   void setMajorBox() {
     majorBox.clear();
@@ -533,4 +522,19 @@ class ScheduleData extends ChangeNotifier {
 //   selectedCourses[currentCourse].sections[section].isPressed = false;
 //   removeCourse(selectedCourses[currentCourse]);
 //   // isClash();
+// }
+
+// void unselect(Course c) {
+//   for (int i = 0; i < selectedCourses.length; i++) {
+//     if (c.code == selectedCourses[i].code) {
+//       for (int j = 0; j < selectedCourses[i].sections.length; j++) {
+//         if (c.sections[0].number == selectedCourses[i].sections[j].number) {
+//           selectedCourses[i].sections[j].isPressed = false;
+//           break;
+//         }
+//       }
+//       break;
+//     }
+//   }
+//   removeCourse(c);
 // }

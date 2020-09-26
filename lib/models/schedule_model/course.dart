@@ -2,7 +2,7 @@ import 'package:utm_orgnization/models/schedule_model/section.dart';
 
 class Course {
   final String id;
-  final String userID;
+  String userID;
   final String type;
   final String code;
   final String name;
@@ -28,4 +28,6 @@ class Course {
         'name': name,
         'sections': sections.map((s) => s.toJson()).toList()
       };
+
+      // set setUserId(String userID) => this.userID = userID;
 }

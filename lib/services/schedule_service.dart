@@ -6,19 +6,17 @@ import '../dependencies.dart';
 
 class ScheduleService {
   final rest = service<RestService>();
-  Map<String,dynamic> hashMap = Map();
+  Map<String, dynamic> hashMap = Map();
 
   String userID;
-  
+
   Future<List<Course>> getUserSelectedCourses() async {
     if (!hashMap.containsKey(userID)) {
       final result = await rest.get('meetings/allUserSelectedCourses/$userID');
       hashMap[userID] = result;
       return (result as List).map((e) => Course.fromJson(e)).toList();
     }
-    return (hashMap[userID] as List)
-        .map((e) => Course.fromJson(e))
-        .toList();
+    return (hashMap[userID] as List).map((e) => Course.fromJson(e)).toList();
   }
 
   Future<List<Major>> getMajors() async {
@@ -44,8 +42,7 @@ class ScheduleService {
   }
 
   Future<List<Course>> getSelectedCourses() async {
-    
-    dynamic response = await rest.get('majors/selectedCourses');
+    dynamic response = await rest.get('majors/allUserSelectedCourses/$userID');
     print(response);
 
     if (response != null) {

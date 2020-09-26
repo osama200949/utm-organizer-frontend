@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utm_orgnization/models/calendar_model/meeting_info.dart';
 import 'package:utm_orgnization/services/meetings_service.dart';
+import 'package:utm_orgnization/services/rest/rest_service.dart';
 import '../../dependencies.dart';
 import '../user.dart';
 
@@ -9,6 +10,7 @@ class MeetingData extends ChangeNotifier {
     setCurrentDay(DateTime.now());
     currentEventNumber = 0;
   }
+  final rest = service<RestService>();
 
   User _user;
   get user => _user;
