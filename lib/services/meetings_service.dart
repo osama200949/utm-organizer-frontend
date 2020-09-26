@@ -17,7 +17,7 @@ class MeetingService {
 
   Future<List<MeetingInfo>> getUserMeetings() async {
     if (!hashMap.containsKey(userID)) {
-      final result = await rest.get('meetings/$userID/calendar');
+      final result = await rest.get('meetings/userCalendar/$userID');
       hashMap[userID] = result;
       return (result as List).map((e) => MeetingInfo.fromJson(e)).toList();
     }

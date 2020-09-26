@@ -8,6 +8,19 @@ class ScheduleService {
   final rest = service<RestService>();
   Map<String,dynamic> hashMap = Map();
 
+  String userID;
+  
+  Future<List<Course>> getUserSelectedCourses() async {
+    if (!hashMap.containsKey(userID)) {
+      final result = await rest.get('meetings/allUserSelectedCourses/$userID');
+      hashMap[userID] = result;
+      return (result as List).map((e) => Course.fromJson(e)).toList();
+    }
+    return (hashMap[userID] as List)
+        .map((e) => Course.fromJson(e))
+        .toList();
+  }
+
   Future<List<Major>> getMajors() async {
     // print('Fetching data from $url');
 

@@ -50,10 +50,12 @@ class ScheduleData extends ChangeNotifier {
   List<int> numbers = [0, 1, 2, 3, 4, 5, 6];
 
   //! FETCH DATA FROM API
+  bool isClashed = false;
   List<Year> yearData;
   List<Major> majors;
   List<Course> allCourseData = [];
   List<ClassInfo> classes = [];
+
 
   User _user;
   get user => _user;
@@ -64,7 +66,8 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
-  setUserSelectedCourses() {}
+  // setUserSelectedCourses() {}
+  
 
   Future<void> setDataFromDatabase() async {
     majors = await dataService.getMajors();
@@ -77,9 +80,27 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> setUserSelectedCourses() async {
+    if (_user == null) return;
+    dataService.userID = _user.uid;
+    final courses = await dataService.getUserSelectedCourses();
+
+    bool isExist = true;
+    courses.forEach((dCourse) {
+      selectedCourses.forEach((sCourse) {
+        if (dCourse.code == sCourse.code) isExist = false;
+      });
+      if (!isExist) selectedCourses.add(dCourse);
+      isExist = true;
+    });
+
+    print('selected courses from server');
+    print(courses);
+    notifyListeners();
+  }
+
   List<ClassInfo> get getClasses => classes;
 
-  bool isClashed = false;
   set setIsClashed(bool b) => isClashed = b;
 
   bool isClash() {
