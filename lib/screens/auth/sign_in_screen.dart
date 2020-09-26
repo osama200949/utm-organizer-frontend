@@ -18,40 +18,10 @@ class _SignInScreenState extends State<SignInScreen> {
   String pwd = '';
   @override
   Widget build(BuildContext context) {
-    _valdation(String user) {
-      return SnackBar(
-        backgroundColor: Colors.grey,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
-        content: Container(
-          height: MediaQuery.of(context).size.height * 0.2,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: 10,
-              ),
-              Container(
-                child: Text(
-                  user,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 13, color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
+          FocusScope.of(context).requestFocus(FocusNode()); //! need to be fixed
         },
         child: Builder(
           builder: (context) => Stack(
@@ -132,6 +102,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         height: 50,
                       ),
                       GestureDetector(
+                        //! The Big Arraow
                         onTap: () async {
                           var user = await service<AuthServices>().signIn(
                             email: email,
@@ -140,7 +111,10 @@ class _SignInScreenState extends State<SignInScreen> {
 
                           if (user is String) {
                             Scaffold.of(context).showSnackBar(_valdation(user));
-                          } else {}
+                          } else {
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, kMainNv, (_) => false);
+                          }
                         },
                         child: Align(
                           alignment: Alignment.centerRight,
@@ -180,6 +154,36 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  _valdation(String user) {
+    return SnackBar(
+      backgroundColor: Colors.grey,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      content: Container(
+        height: MediaQuery.of(context).size.height * 0.2,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              child: Text(
+                user,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 13, color: Colors.white),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -12,6 +12,13 @@ import 'package:utm_orgnization/services/rest/rest_service.dart';
 */
 class AuthServices with ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool _isAuthenticated = false;
+
+  get isAuthenticated => _isAuthenticated;
+  set setIsAuthnticated(bool newAuth) {
+    _isAuthenticated = newAuth;
+    notifyListeners();
+  }
 
   Future signIn({
     String email,
@@ -46,15 +53,19 @@ class AuthServices with ChangeNotifier {
     return token;
   }
 
-  User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null
-        ? User(
-            displayName: user.displayName,
-            uid: user.uid,
-            photoUrl: user.photoUrl,
-            email: user.email,
-          )
-        : null;
+  User userFromFirebaseUser(FirebaseUser user) {
+    if (user != null) {
+      _isAuthenticated = true;
+      notifyListeners();
+      return User(
+        displayName: user.displayName,
+        uid: user.uid,
+        photoUrl: user.photoUrl,
+        email: user.email,
+      );
+    } else {
+      return null;
+    }
   }
 
   // auth change user stream
@@ -62,7 +73,7 @@ class AuthServices with ChangeNotifier {
     service<AuthServices>()
         .retreiveToken()
         .then((value) => service<RestService>().idToken = value);
-    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
+    return _auth.onAuthStateChanged.map(userFromFirebaseUser);
   }
 
   Future signUp({
@@ -98,11 +109,6 @@ class AuthServices with ChangeNotifier {
       return null;
     }
   }
-
-      /*
-        Author Credit :Ibrahim Katari
-        Auth Services File.
-      */
 
   Future updateProfile(
       {String uid,

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import 'package:utm_orgnization/services/auth_services.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class LogoutScreen extends StatefulWidget {
@@ -11,7 +13,8 @@ class LogoutScreen extends StatefulWidget {
 
 class _LogoutScreenState extends State<LogoutScreen> {
   @override
-  void initState() {
+  void initState() async{
+    // await Provider.of<AuthServices>(context).signOut();
     Timer(Duration(seconds: 3),
         () => Navigator.pushReplacementNamed(context, '/signIn'));
     super.initState();
