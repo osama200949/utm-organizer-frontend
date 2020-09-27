@@ -44,16 +44,12 @@ class ScheduleService {
   Future<List<Course>> getSelectedCourses() async {
     dynamic response = await rest.get('majors/allUserSelectedCourses/$userID');
     print(response);
+    final List<Course> selectedCourses =
+        (response as List).map((json) => Course.fromJson(json)).toList();
 
-    if (response != null) {
-      final List<Course> selectedCourses =
-          (response as List).map((json) => Course.fromJson(json)).toList();
+    print(selectedCourses);
 
-      print(selectedCourses);
-
-      return selectedCourses;
-    }
-    return [];
+    return selectedCourses;
   }
 
   Future<Course> updateSelectedCourse(Course c) async {
@@ -65,7 +61,7 @@ class ScheduleService {
     return Course.fromJson(response);
   }
 
-  Future removeSelectedCourse(Course c) async {
+  Future<void> removeSelectedCourse(Course c) async {
     final response = await rest.delete('majors/selectedCourses/${c.id}');
 
     print("Delete Response: \n");

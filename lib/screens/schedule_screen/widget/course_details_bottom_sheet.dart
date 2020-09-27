@@ -4,9 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:utm_orgnization/models/provider/schedule_data.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 
-
-
-
 void bottomSheet(sheetContext, Course course) {
 
   final data = Provider.of<ScheduleData>(sheetContext, listen: false);
@@ -171,7 +168,9 @@ void bottomSheet(sheetContext, Course course) {
                               state(() {
                                 if (course.sections[section].isPressed) {
                                   data.currentSection = section;
-                                  data.removeCourse(course,);
+                                  data.removeCourse(
+                                    course,
+                                  );
                                 }
                               });
                             }
@@ -191,7 +190,7 @@ void bottomSheet(sheetContext, Course course) {
                           ? (_) {
                               data.addCourse(course);
                               Navigator.pop(context);
-                          }
+                            }
                           : null,
                     ),
                   ],
@@ -204,10 +203,8 @@ void bottomSheet(sheetContext, Course course) {
       });
 }
 
-
-
-              //! check CLASH
-                                // data.isClash();
+//! check CLASH
+// data.isClash();
 //                               if (data.isClashed) {
 //                                 Scaffold.of(sheetContext).showSnackBar(SnackBar(
 //                                   content: Text('Warning you have clash now!'),

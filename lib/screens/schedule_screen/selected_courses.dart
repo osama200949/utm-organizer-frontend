@@ -114,8 +114,9 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                                               color: Colors.red,
                                               size: 32,
                                             ),
-                                            onPressed: () {
-                                              data.removeCourse(data
+                                            onPressed: () async{
+                                              
+                                            await data.removeCourse(data
                                                   .selectedCourses[index]);
                                             },
                                           ),

@@ -79,32 +79,13 @@ class ScheduleData extends ChangeNotifier {
 
     majors = await secheduleService.getMajors();
 
-    selectedCourses = await secheduleService.getSelectedCourses();
+    // selectedCourses = await secheduleService.getSelectedCourses();
     yearData = majors[currentMajor].years;
 
     setMajorBox();
 
     notifyListeners();
   }
-
-  // Future<void> setUserSelectedCourses() async {
-  //   if (_user == null) return;
-  //   secheduleService.userID = _user.uid;
-  //   final courses = await secheduleService.getUserSelectedCourses();
-
-  //   bool isExist = true;
-  //   courses.forEach((dCourse) {
-  //     selectedCourses.forEach((sCourse) {
-  //       if (dCourse.code == sCourse.code) isExist = false;
-  //     });
-  //     if (!isExist) selectedCourses.add(dCourse);
-  //     isExist = true;
-  //   });
-
-  //   print('selected courses from server');
-  //   print(courses);
-  //   notifyListeners();
-  // }
 
   List<ClassInfo> get getClasses => classes;
 
@@ -175,23 +156,23 @@ class ScheduleData extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> clearAll() async {
-    await secheduleService.removeAllSelectedCourse();
-    selectedCourses.map((course) {
-      course.sections.map((section) {
-        if (section.isPressed) {
-          section.isPressed = false;
-          removeCourse(course);
-        }
-      });
-    });
+  // Future<void> clearAll() async {
+  //   await secheduleService.removeAllSelectedCourse();
+  //   selectedCourses.map((course) {
+  //     course.sections.map((section) {
+  //       if (section.isPressed) {
+  //         section.isPressed = false;
+  //         removeCourse(course);
+  //       }
+  //     });
+  //   });
 
-    // selectedCourses.clear();
+  // selectedCourses.clear();
 
-    classes.clear();
-    // getData();
-    notifyListeners();
-  }
+  //   classes.clear();
+  //   // getData();
+  //   notifyListeners();
+  // }
 
   List<Course> getAllData() {
     allCourseData.clear();
@@ -267,17 +248,17 @@ class ScheduleData extends ChangeNotifier {
     }
   }
 
-  void removeCourse(Course c) async {
+  Future<void> removeCourse(Course c) async {
     // Clear the Course from the btoomSheet
 
     getCourse(currentCourse).sections[currentSection].isPressed = false;
     for (int i = 0; i < selectedCourses.length; i++) {
       if (selectedCourses[i].code == c.code) {
+        // await secheduleService.removeSelectedCourse(selectedCourses[i]);
         selectedCourses.removeAt(i);
       }
     }
 
-    // await secheduleService.removeSelectedCourse(selectedCourses[i]);
     notifyListeners();
   }
 
@@ -537,4 +518,22 @@ class ScheduleData extends ChangeNotifier {
 //     }
 //   }
 //   removeCourse(c);
+// }
+// Future<void> setUserSelectedCourses() async {
+//   if (_user == null) return;
+//   secheduleService.userID = _user.uid;
+//   final courses = await secheduleService.getUserSelectedCourses();
+
+//   bool isExist = true;
+//   courses.forEach((dCourse) {
+//     selectedCourses.forEach((sCourse) {
+//       if (dCourse.code == sCourse.code) isExist = false;
+//     });
+//     if (!isExist) selectedCourses.add(dCourse);
+//     isExist = true;
+//   });
+
+//   print('selected courses from server');
+//   print(courses);
+//   notifyListeners();
 // }

@@ -18,8 +18,8 @@ class _MainBottomSheetState extends State<CoursesListView> {
 
         child: data.getCoursesLength() > 0
             ? ListView.builder(
-              shrinkWrap: true,
-              padding: EdgeInsets.all(15),
+                shrinkWrap: true,
+                padding: EdgeInsets.all(15),
                 itemCount: data.getCoursesLength(),
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {

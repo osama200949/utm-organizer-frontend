@@ -285,7 +285,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
             onPressed: () async {
               Function clearAll = () {
                 setState(() {
-                  data.clearAll();
+                  // data.clearAll();
                 });
               };
 
@@ -386,10 +386,10 @@ void _showConfirmationDialog(mcontext, Function clearAll) {
       });
 }
 
-void _showDialogTooManyClashes(mcontext, Function clearAll) {
+void _showDialogTooManyClashes(context, Function clearAll) {
   // flutter defined function
   showDialog(
-    context: mcontext,
+    context: context,
     builder: (BuildContext context) {
       // return object of type Dialog
       return StatefulBuilder(
