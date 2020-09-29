@@ -53,8 +53,9 @@ class ScheduleService {
   }
 
   Future<Course> updateSelectedCourse(Course c) async {
+    final newSection = c.sections;
     final response = await rest.patch('majors/selectedCourses/${c.id}',
-        data: {"sections": c.sections});
+        data: {"sections": newSection});
 
     print("ScheduleService after update:\n $response");
 

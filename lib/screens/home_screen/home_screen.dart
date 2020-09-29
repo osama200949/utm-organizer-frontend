@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/components/appbar_widget.dart';
-import 'package:utm_orgnization/components/bottom_navigation.dart';
+import 'package:utm_orgnization/screens/_archived/old_bottom_navigation_bar.dart';
 import 'package:utm_orgnization/components/canvas/Canva_home.dart';
 import 'package:utm_orgnization/models/user.dart';
 import 'package:utm_orgnization/screens/activities_screens/club_event_info.dart';
