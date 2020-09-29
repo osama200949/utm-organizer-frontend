@@ -50,29 +50,28 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 10),
                       child: ListTile(
-                          leading: Text(
-                            'Selected Courses',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontFamily: 'Muli',
-                              color: Colors.white,
-                            ),
+                        leading: Text(
+                          'Selected Courses',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontFamily: 'Muli',
+                            color: Colors.white,
                           ),
-                          trailing: IconButton(
-                            icon: Icon(
-                              FontAwesomeIcons.edit,
-                              color: Colors.white,
-                              size: 32,
-                            ),
-                            // onPressed: () {
-                            //   Navigator.push(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             SelectedCoursesScreen(),
-                            //       ));
-                            // },
-                          )),
+                        ),
+                        trailing: Icon(
+                          FontAwesomeIcons.edit,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                        // onPressed: () {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             SelectedCoursesScreen(),
+                        //       ));
+                        // },
+                      ),
                     ),
                   ),
                   //! Bottom Area
@@ -87,12 +86,10 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                       ),
                       child: data.selectedCourses.length != 0
                           ? Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.stretch,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Expanded(
                                   child: ListView.separated(
-
                                       separatorBuilder: (context, index) =>
                                           Divider(
                                             thickness: 2,
@@ -100,8 +97,7 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                                       shrinkWrap: true,
                                       padding: EdgeInsets.only(
                                           top: 15, left: 5, bottom: 10),
-                                      itemCount:
-                                          data.selectedCourses.length,
+                                      itemCount: data.selectedCourses.length,
                                       itemBuilder: (context, index) {
                                         return ListTile(
                                           title: Text(
@@ -114,10 +110,12 @@ class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
                                               color: Colors.red,
                                               size: 32,
                                             ),
-                                            onPressed: () async{
-                                              
-                                            await data.removeCourse(data
-                                                  .selectedCourses[index]);
+                                            onPressed: () async {
+                                              data.setCurrentCourse = index;
+                                              await data.removeCourse(
+                                                  course: data
+                                                      .selectedCourses[index],
+                                                  index: index);
                                             },
                                           ),
                                         );

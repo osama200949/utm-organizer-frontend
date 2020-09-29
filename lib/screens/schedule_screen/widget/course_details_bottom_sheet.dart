@@ -5,7 +5,6 @@ import 'package:utm_orgnization/models/provider/schedule_data.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 
 void bottomSheet(sheetContext, Course course) {
-
   final data = Provider.of<ScheduleData>(sheetContext, listen: false);
   print(data);
   int section = 0;
@@ -14,11 +13,6 @@ void bottomSheet(sheetContext, Course course) {
       section = j;
     }
   }
-  // for (int j = 0; j < data.getCourse(data.currentCourse).sections.length; j++) {
-  //   if (data.getCourse(data.currentCourse).sections[j].isPressed == true) {
-  //     data.currentSection = j;
-  //   }
-  // }
 
   showModalBottomSheet(
       isDismissible: false,
@@ -169,7 +163,7 @@ void bottomSheet(sheetContext, Course course) {
                                 if (course.sections[section].isPressed) {
                                   data.currentSection = section;
                                   data.removeCourse(
-                                    course,
+                                    course: course,
                                   );
                                 }
                               });
@@ -202,18 +196,3 @@ void bottomSheet(sheetContext, Course course) {
         });
       });
 }
-
-//! check CLASH
-// data.isClash();
-//                               if (data.isClashed) {
-//                                 Scaffold.of(sheetContext).showSnackBar(SnackBar(
-//                                   content: Text('Warning you have clash now!'),
-//                                   action: SnackBarAction(
-//                                     label: 'Undo',
-//                                     onPressed: () {
-//                                       // Some code to undo the change.
-//                                       data.undo();
-//                                     },
-//                                   ),
-//                                 ));
-//                               }

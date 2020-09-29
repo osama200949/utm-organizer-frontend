@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/components/BottomNavigation.dart';
+import 'package:utm_orgnization/components/bottom_navigation_bar.dart';
 import 'package:utm_orgnization/models/provider/meeting_data.dart';
 import 'package:utm_orgnization/screens/activities_screens/club_event_info.dart';
 import 'package:utm_orgnization/screens/calendar_screen/calendar.dart';

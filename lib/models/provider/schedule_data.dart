@@ -77,9 +77,16 @@ class ScheduleData extends ChangeNotifier {
     if (_user == null) return;
     secheduleService.userID = _user.uid;
 
-    majors = await secheduleService.getMajors();
-
-    // selectedCourses = await secheduleService.getSelectedCourses();
+    try {
+      majors = await secheduleService.getMajors();
+    } catch (e) {
+      majors = null;
+    }
+    try {
+      selectedCourses = await secheduleService.getSelectedCourses();
+    } catch (e) {
+      selectedCourses = [];
+    }
     yearData = majors[currentMajor].years;
 
     setMajorBox();
@@ -231,8 +238,8 @@ class ScheduleData extends ChangeNotifier {
     }
 
     if (!present) {
-      await secheduleService.addSelectedCourse(cs);
-      selectedCourses.add(cs);
+      final result = await secheduleService.addSelectedCourse(cs);
+      selectedCourses.add(result);
     } else
       updateCourse(c);
 
@@ -248,13 +255,14 @@ class ScheduleData extends ChangeNotifier {
     }
   }
 
-  Future<void> removeCourse(Course c) async {
-    // Clear the Course from the btoomSheet
+  Future<void> removeCourse({Course course, int index}) async {
+    if (index == null) index = currentCourse;
 
-    getCourse(currentCourse).sections[currentSection].isPressed = false;
     for (int i = 0; i < selectedCourses.length; i++) {
-      if (selectedCourses[i].code == c.code) {
-        // await secheduleService.removeSelectedCourse(selectedCourses[i]);
+      if (selectedCourses[i].code == course.code) {
+        final selectedSection = selectedCourses[i].sections[0].number - 1;
+        getCourse(index).sections[selectedSection].isPressed = false;
+        await secheduleService.removeSelectedCourse(selectedCourses[i]);
         selectedCourses.removeAt(i);
       }
     }

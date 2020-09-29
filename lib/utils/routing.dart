@@ -16,9 +16,9 @@ import 'package:utm_orgnization/screens/calendar_screen/calendar_details_screen.
 import 'package:utm_orgnization/screens/calendar_screen/update_task.dart';
 import 'package:utm_orgnization/screens/home_screen/home_screen.dart';
 import 'package:utm_orgnization/screens/profile_screens/profile_screen.dart';
-import 'package:utm_orgnization/screens/schedule_screen/schedule.dart';
-import 'package:utm_orgnization/screens/schedule_screen/schedule_detail.dart';
-import 'package:utm_orgnization/screens/schedule_screen/selected_courses.dart';
+import 'package:utm_orgnization/screens/schedule_screen/schedule_screen.dart';
+import 'package:utm_orgnization/screens/schedule_screen/schedule_detail_screen.dart';
+import 'package:utm_orgnization/screens/schedule_screen/selected_courses_screen.dart';
 import 'package:utm_orgnization/screens/schedule_screen/timetable.dart';
 import 'package:utm_orgnization/screens/schedule_screen/timetable_preview.dart';
 import 'package:utm_orgnization/screens/splash_screens/choose_page.dart';

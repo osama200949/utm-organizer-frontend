@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:utm_orgnization/models/provider/schedule_data.dart';
 import 'package:utm_orgnization/components/canvas/Canva_home.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
-import 'package:utm_orgnization/screens/schedule_screen/selected_courses.dart';
+import 'package:utm_orgnization/screens/schedule_screen/selected_courses_screen.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 import 'widget/courses_listview.dart';
 
