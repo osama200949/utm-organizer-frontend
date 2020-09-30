@@ -26,7 +26,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   table_calendar: ^2.2.3
   firebase_storage: ^3.1.6
-  animations: ^1.1.0
+  animations: ^1.1.2
   cupertino_icons: ^0.1.2
   google_nav_bar: ^2.1.0
   line_icons: ^0.2.0
@@ -46,8 +46,8 @@ dependencies:
   cross_local_storage: ^1.1.0
   flutter_cupertino_date_picker: ^1.0.23+1
   image_picker: ^0.6.7
-  date_format:
-  intl:
+  date_format: null
+  intl: null
   uuid: ^2.0.4
   lite_rolling_switch: ^0.1.1
   syncfusion_flutter_calendar: ^18.1.54-beta
@@ -65,7 +65,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
   # The following line ensures that the Material Icons font is
@@ -120,6 +119,6 @@ flutter:
     # - family: CapriolaRegular
     #   fonts:
     #   - asset: fonts/Capriola-Regular.ttf
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
