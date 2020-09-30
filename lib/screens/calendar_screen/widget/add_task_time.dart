@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:utm_orgnization/models/provider/meeting_data.dart';
-
 import '../../../utils/constants.dart';
 
 class AddTaskTime extends StatefulWidget {
@@ -139,63 +137,76 @@ class _AddTaskTimeState extends State<AddTaskTime> {
                   ),
                 ),
                 child: Text(
-                  DateFormat('hh:mm a').format(  widget.meetingData.tempTask.endTime != DateTime.now()
-                    ? widget.meetingData.tempTask.endTime
-                    : DateTime.now(),),
+                  DateFormat('hh:mm a').format(
+                    widget.meetingData.tempTask.endTime != DateTime.now()
+                        ? widget.meetingData.tempTask.endTime
+                        : DateTime.now(),
+                  ),
                   style: kPrimary_heading.copyWith(
                     fontSize: 16,
                     color: Colors.black,
                   ),
                 ),
               ),
-              // child: Text( '${widget.meetingData.date.weekday}'),
               onTap: () {
                 showModalBottomSheet(
                   isScrollControlled: false,
                   context: context,
                   builder: (_) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      SizedBox(
-                        height: 300,
-                        child: CupertinoDatePicker(
-                          initialDateTime:  widget.meetingData.tempTask.endTime == null
-                              ? DateTime.now()
-                              : widget.meetingData.tempTask.endTime,
-                          minimumYear: DateTime.now().year,
-                          maximumYear: DateTime.now().year + 5,
-                          mode: CupertinoDatePickerMode.time,
-                          onDateTimeChanged: (date) {
-                            widget.meetingData.tempTask.endTime = date;
-                          },
+                      Expanded(
+                        flex: 14,
+                        child: SizedBox(
+                          height: 300,
+                          child: CupertinoDatePicker(
+                            initialDateTime:
+                                widget.meetingData.tempTask.endTime == null
+                                    ? DateTime.now()
+                                    : widget.meetingData.tempTask.endTime,
+                            minimumYear: DateTime.now().year,
+                            maximumYear: DateTime.now().year + 5,
+                            mode: CupertinoDatePickerMode.time,
+                            onDateTimeChanged: (date) {
+                              widget.meetingData.tempTask.endTime = date;
+                            },
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30, right: 30),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {});
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            // width: 450,
-                            height: 70,
-                            child: Center(
-                                child: Text(
-                              'Confirm',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontFamily: 'Muli'),
-                            )),
-                            decoration: BoxDecoration(
-                              color: Color(0xffD63447),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
+                      Expanded(
+                        flex: 3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {});
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              // width: 450,
+                              height: 70,
+                              child: Center(
+                                  child: Text(
+                                'Confirm',
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    color: Colors.white,
+                                    fontFamily: 'Muli'),
+                              )),
+                              decoration: BoxDecoration(
+                                color: Color(0xffD63447),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 15,
+                      )
                     ],
                   ),
                 );

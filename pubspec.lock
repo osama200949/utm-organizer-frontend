@@ -141,6 +141,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.8"
+  date_time_picker:
+    dependency: "direct main"
+    description:
+      name: date_time_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -237,13 +244,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.26"
-  flutter_money_formatter:
+  flutter_localizations:
     dependency: transitive
-    description:
-      name: flutter_money_formatter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.3"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -344,7 +349,7 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.15.8"
+    version: "0.16.1"
   js:
     dependency: transitive
     description:
@@ -387,13 +392,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.8"
-  moneytextformfield:
-    dependency: "direct main"
-    description:
-      name: moneytextformfield
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.5+1"
   nested:
     dependency: transitive
     description:

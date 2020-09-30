@@ -1,8 +1,8 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:utm_orgnization/models/provider/meeting_data.dart';
-
 import '../../../utils/constants.dart';
 
 class AddTaskDate extends StatefulWidget {
@@ -53,9 +53,6 @@ class AddTaskDateState extends State<AddTaskDate> {
             ),
             child: Text(
               DateFormat('dd-MM-yyyy').format(
-                // widget.meetingData.dateFrom != DateTime.now()
-                //     ? widget.meetingData.dateFrom
-                //     : widget.meetingData.getEventToBeShown().dateClass.dateFrom,
                 widget.meetingData.tempTask.startTime != DateTime.now()
                     ? widget.meetingData.tempTask.startTime
                     : DateTime.now(),
@@ -70,9 +67,12 @@ class AddTaskDateState extends State<AddTaskDate> {
             showModalBottomSheet(
               context: context,
               builder: (_) => Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  SizedBox(
-                    height: 300,
+                  Expanded(
+                    flex: 14,
+                    // height: 300,
                     child: CupertinoDatePicker(
                       initialDateTime:
                           widget.meetingData.tempTask.startTime == null
@@ -86,32 +86,38 @@ class AddTaskDateState extends State<AddTaskDate> {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 30),
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {});
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        height: 70,
-                        child: Center(
-                            child: Text(
-                          'Confirm',
-                          style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontFamily: 'Muli'),
-                        )),
-                        decoration: BoxDecoration(
-                          color: Color(0xffD63447),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 35, right: 35),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {});
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          // height: 70,
+                          child: Center(
+                              child: Text(
+                            'Confirm',
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontFamily: 'Muli'),
+                          )),
+                          decoration: BoxDecoration(
+                            color: Color(0xffD63447),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 15,
+                  )
                 ],
               ),
             );

@@ -72,9 +72,9 @@ class Router {
       case kHomeRoute:
         builder = (BuildContext context) => SplashScreen();
         break;
-      case kAddEventRoute:
-        builder = (BuildContext context) => Events();
-        break;
+      // case kAddEventRoute:
+      //   builder = (BuildContext context) => Events();
+      //   break;
       case kMainNv:
         builder = (BuildContext context) => MainNavigation(
           currentIndex: 0,
