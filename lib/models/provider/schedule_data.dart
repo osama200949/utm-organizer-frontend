@@ -55,7 +55,7 @@ class ScheduleData extends ChangeNotifier {
     setDataFromDatabase();
     notifyListeners();
   }
-  
+
   Future<void> setDataFromDatabase() async {
     if (_user == null) return;
     secheduleService.userID = _user.uid;
@@ -184,7 +184,7 @@ class ScheduleData extends ChangeNotifier {
     return allCourseData;
   }
 
-  void addCourse(Course c) async {
+  Future<void> addCourse(Course c) async {
     c.userID = _user.uid;
     bool present = false;
     Course cs = Course(
@@ -200,12 +200,15 @@ class ScheduleData extends ChangeNotifier {
         break;
       }
     }
-
-    if (!present) {
-      final result = await secheduleService.addSelectedCourse(cs);
-      selectedCourses.add(result);
-    } else
-      updateCourse(c);
+    try {
+      if (!present) {
+        final result = await secheduleService.addSelectedCourse(cs);
+        selectedCourses.add(result);
+      } else
+        await updateCourse(c);
+    } catch (e) {
+      throw e;
+    }
 
     notifyListeners();
   }
@@ -231,9 +234,13 @@ class ScheduleData extends ChangeNotifier {
       {@required Course course, @required int index}) async {
     for (int i = 0; i < selectedCourses.length; i++) {
       if (selectedCourses[i].code == course.code) {
-        await secheduleService.removeSelectedCourse(selectedCourses[i]);
-        setIsPressed(selectedCourses[i]);
-        selectedCourses.removeAt(i);
+        try {
+          await secheduleService.removeSelectedCourse(selectedCourses[i]);
+          setIsPressed(selectedCourses[i]);
+          selectedCourses.removeAt(i);
+        } catch (e) {
+          throw e;
+        }
       }
     }
 
