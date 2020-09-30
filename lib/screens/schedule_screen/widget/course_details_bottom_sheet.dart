@@ -164,6 +164,7 @@ void bottomSheet(sheetContext, Course course) {
                                   data.currentSection = section;
                                   data.removeCourse(
                                     course: course,
+                                    index: data.currentCourse
                                   );
                                 }
                               });

@@ -224,3 +224,19 @@ const List<Color> eventSecondaryColors = [
   Color(0xffD888B0),
   Color(0xff88D8C5),
 ];
+
+ List<Color> timetableColors = [
+    Colors.red,
+    Colors.purple,
+    Colors.deepOrange,
+    Colors.black,
+    Colors.blueAccent,
+    Colors.pink,
+    Colors.green,
+    Colors.orangeAccent,
+    Colors.grey,
+    Colors.blue,
+    Colors.amber,
+    Colors.greenAccent,
+    Colors.lightBlueAccent
+  ];

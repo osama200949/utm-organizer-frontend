@@ -9,6 +9,7 @@ import 'package:utm_orgnization/models/schedule_model/year.dart';
 import 'package:utm_orgnization/models/user.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/services/schedule_service.dart';
+import 'package:utm_orgnization/utils/constants.dart';
 
 class ScheduleData extends ChangeNotifier {
   final secheduleService = service<ScheduleService>();
@@ -19,22 +20,6 @@ class ScheduleData extends ChangeNotifier {
     "Second",
     "Third",
     "Fourth",
-  ];
-
-  List<Color> c = [
-    Colors.red,
-    Colors.purple,
-    Colors.deepOrange,
-    Colors.black,
-    Colors.blueAccent,
-    Colors.pink,
-    Colors.green,
-    Colors.orangeAccent,
-    Colors.grey,
-    Colors.blue,
-    Colors.amber,
-    Colors.greenAccent,
-    Colors.lightBlueAccent
   ];
 
   List<String> others = [
@@ -61,18 +46,16 @@ class ScheduleData extends ChangeNotifier {
   List<Major> majors;
   List<Course> allCourseData = [];
   List<ClassInfo> classes = [];
+  List<Course> selectedCourses = [];
 
   User _user;
   get user => _user;
   set user(User newUser) {
     _user = newUser;
     setDataFromDatabase();
-    // setUserSelectedCourses();
     notifyListeners();
   }
-
-  // setUserSelectedCourses() {}
-
+  
   Future<void> setDataFromDatabase() async {
     if (_user == null) return;
     secheduleService.userID = _user.uid;
@@ -155,31 +138,14 @@ class ScheduleData extends ChangeNotifier {
                 converToDay(
                     selectedCourses[i].sections[0].doctor.classes[j].day),
                 selectedCourses[i].sections[0].doctor.classes[j].endTime.hour),
-            bgColor: c[i] != null ? c[i] : Colors.green,
+            bgColor:
+                timetableColors[i] != null ? timetableColors[i] : Colors.green,
           ),
         );
       }
 
     notifyListeners();
   }
-
-  // Future<void> clearAll() async {
-  //   await secheduleService.removeAllSelectedCourse();
-  //   selectedCourses.map((course) {
-  //     course.sections.map((section) {
-  //       if (section.isPressed) {
-  //         section.isPressed = false;
-  //         removeCourse(course);
-  //       }
-  //     });
-  //   });
-
-  // selectedCourses.clear();
-
-  //   classes.clear();
-  //   // getData();
-  //   notifyListeners();
-  // }
 
   List<Course> getAllData() {
     allCourseData.clear();
@@ -218,8 +184,6 @@ class ScheduleData extends ChangeNotifier {
     return allCourseData;
   }
 
-  List<Course> selectedCourses = [];
-
   void addCourse(Course c) async {
     c.userID = _user.uid;
     bool present = false;
@@ -255,14 +219,20 @@ class ScheduleData extends ChangeNotifier {
     }
   }
 
-  Future<void> removeCourse({Course course, int index}) async {
-    if (index == null) index = currentCourse;
+  void setIsPressed(Course c) {
+    allCourseData.forEach((element) {
+      if (c.code == element.code)
+        element.sections[c.sections[0].number - 1].isPressed = false;
+    });
+    notifyListeners();
+  }
 
+  Future<void> removeCourse(
+      {@required Course course, @required int index}) async {
     for (int i = 0; i < selectedCourses.length; i++) {
       if (selectedCourses[i].code == course.code) {
-        final selectedSection = selectedCourses[i].sections[0].number - 1;
-        getCourse(index).sections[selectedSection].isPressed = false;
         await secheduleService.removeSelectedCourse(selectedCourses[i]);
+        setIsPressed(selectedCourses[i]);
         selectedCourses.removeAt(i);
       }
     }
@@ -272,7 +242,6 @@ class ScheduleData extends ChangeNotifier {
 
 //! SELECTED COURSES
   get selectedCoursesLength => selectedCourses.length;
-  // get selectedCourses => selectedCourses;
 
   String getSelectedCourses() {
     return selectedCourses[0].name;
@@ -282,7 +251,6 @@ class ScheduleData extends ChangeNotifier {
     if (currentYearindex == -1)
       return getAllData().length;
     else
-      // return yearData[currentYearindex].semesters[currentSem].courses.length;
       return getCourses(currentYearindex).length;
   }
 
@@ -335,14 +303,6 @@ class ScheduleData extends ChangeNotifier {
     currentMajor = index;
     notifyListeners();
   }
-
-  // Future<void> addSelectedCoursesToDatabase() async {
-  //   selectedCourses.forEach((element) {
-  //     // secheduleService.updateSelectedCourse(element);
-  //     secheduleService.addSelectedCourse(element);
-  //   });
-  //   // secheduleService.addSelectedCourse(selectedCourses);
-  // }
 
   void setMajorBox() {
     majorBox.clear();
@@ -543,5 +503,23 @@ class ScheduleData extends ChangeNotifier {
 
 //   print('selected courses from server');
 //   print(courses);
+//   notifyListeners();
+// }
+
+// Future<void> clearAll() async {
+//   await secheduleService.removeAllSelectedCourse();
+//   selectedCourses.map((course) {
+//     course.sections.map((section) {
+//       if (section.isPressed) {
+//         section.isPressed = false;
+//         removeCourse(course);
+//       }
+//     });
+//   });
+
+// selectedCourses.clear();
+
+//   classes.clear();
+//   // getData();
 //   notifyListeners();
 // }
