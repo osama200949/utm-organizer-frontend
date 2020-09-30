@@ -14,10 +14,9 @@ class TimetablePreview extends StatefulWidget {
 }
 
 class _TimetablePreviewState extends State<TimetablePreview> {
-
   @override
   Widget build(BuildContext context) {
-        final classes = Provider.of<ScheduleData>(context).classes;
+    final classes = Provider.of<ScheduleData>(context).classes;
 
     return Scaffold(
         body: SfCalendar(
@@ -94,9 +93,11 @@ class MeetingDataSource extends CalendarDataSource {
 
   @override
   String getSubject(int index) {
-    return (appointments[index].name +
-        "\n\nSection: " +
-        appointments[index].section);
+    String output = appointments[index].name;
+    String newO =
+        '${output.substring(0, 15)} S(${appointments[index].section})';
+
+    return newO;
   }
 
   @override
