@@ -13,7 +13,6 @@ import 'package:utm_orgnization/utils/constants.dart';
 
 class ScheduleData extends ChangeNotifier {
   final secheduleService = service<ScheduleService>();
-
   List<String> yearsText = [
     "All",
     "Fisrt",
@@ -47,6 +46,7 @@ class ScheduleData extends ChangeNotifier {
   List<Course> allCourseData = [];
   List<ClassInfo> classes = [];
   List<Course> selectedCourses = [];
+  bool isThereIsTimetable = false;
 
   User _user;
   get user => _user;

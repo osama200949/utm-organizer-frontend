@@ -76,8 +76,12 @@ class _TimeTableState extends State<Timetable> {
               onPressed: () {
                 // Provider.of<MeetingData>(context, listen: false)   //! Set timetable on calendar feature
                 //     .setTimeTable(data.classes);
-
-                // Provider.of<ScheduleData>(context,listen: false).addSelectedCoursesToDatabase();
+                
+                final data = Provider.of<ScheduleData>(context, listen: false);
+                if (data.selectedCourses.length > 0)
+                  data.isThereIsTimetable = true;
+                else
+                  data.isThereIsTimetable = false;
 
                 Navigator.pushNamedAndRemoveUntil(
                     context, kCalenderRoute, (route) => false);
