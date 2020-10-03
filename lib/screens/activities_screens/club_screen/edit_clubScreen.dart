@@ -334,7 +334,7 @@ class _EditScreenWalkthrowState extends State<EditScreenWalkthrow> {
                                                     (int index) {
                                                       return ChoiceChip(
                                                         selectedColor:
-                                                            kRead_primary,
+                                                            kRed_primary,
                                                         onSelected: (selected) {
                                                           setState(
                                                             () {

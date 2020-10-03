@@ -410,7 +410,7 @@ class _ClubScreenWalkthrowState extends State<ClubScreenWalkthrow> {
                                                     (int index) {
                                                       return ChoiceChip(
                                                         selectedColor:
-                                                            kRead_primary,
+                                                            kRed_primary,
                                                         onSelected: (selected) {
                                                           setState(() {
                                                             value = index;

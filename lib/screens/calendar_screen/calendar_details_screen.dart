@@ -229,7 +229,7 @@ class _CalenderDetailState extends State<CalenderDetail> {
                                       width: 10,
                                     ),
                                     CircleAvatar(
-                                      backgroundColor: (kRead_primary),
+                                      backgroundColor: (kRed_primary),
                                     ),
                                     SizedBox(
                                       width: 10,

@@ -101,7 +101,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                                   child: Text(
                                     'Selected Courses',
                                     style: TextStyle(
-                                        fontSize: 14, color: kRead_primary),
+                                        fontSize: 14, color: kRed_primary),
                                   ),
                                 ),
                               ),

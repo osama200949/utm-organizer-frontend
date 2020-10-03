@@ -42,7 +42,7 @@ const kWrapper = 'wrapper';
 //! Style - Font
 const kOrange_primary = Color(0xffF57B51);
 const kYellow_primary = Color(0xffFECA3C);
-const kRead_primary = Color(0xffD63447);
+const kRed_primary = Color(0xffD63447);
 const kgrey_primary = Color(0xff535252);
 const kpiegp_primary = Color(0xffD63447);
 const kgreyT_primary = Color(0xff7d7d7d);

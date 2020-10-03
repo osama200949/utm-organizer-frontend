@@ -76,12 +76,13 @@ class _TimeTableState extends State<Timetable> {
                 'Save ',
                 style: TextStyle(fontSize: 18),
               ),
-              backgroundColor: Color(0xffD63447),
+              backgroundColor: kRed_primary,
               onPressed: () {
                 // Provider.of<MeetingProvider>(context, listen: false)   //! Set timetable on calendar feature
                 //     .setTimeTable(data.classes);
 
-                final data = Provider.of<ScheduleProvider>(context, listen: false);
+                final data =
+                    Provider.of<ScheduleProvider>(context, listen: false);
                 if (data.selectedCourses.length > 0)
                   data.isThereIsTimetable = true;
                 else

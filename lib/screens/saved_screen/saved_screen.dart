@@ -49,7 +49,7 @@ class SavedScreen extends StatelessWidget with ChangeNotifier {
     //                         Icon(
     //                           Icons.favorite,
     //                           size: 40,
-    //                           color: kRead_primary,
+    //                           color: kRed_primary,
     //                         ),
     //                         SizedBox(
     //                           width: 20,

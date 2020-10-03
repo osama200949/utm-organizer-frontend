@@ -54,13 +54,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 iconPath,
                 height: 35,
                 color: widget.selectedItemIndex == index
-                    ? kRead_primary
+                    ? kRed_primary
                     : Colors.black,
               )
             : CircleAvatar(
                 radius: widget.selectedItemIndex == index ? 28 : 28,
                 backgroundColor: widget.selectedItemIndex == index
-                    ? kRead_primary
+                    ? kRed_primary
                     : Colors.white,
                 child: CircleAvatar(
                   radius: 25,

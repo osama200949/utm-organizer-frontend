@@ -19,7 +19,7 @@ class AddTask extends StatelessWidget {
         return WillPopScope(
           onWillPop: () => Future.value(false),
           child: Scaffold(
-            backgroundColor: kRead_primary,
+            backgroundColor: kRed_primary,
             //  extendBody: true,
             resizeToAvoidBottomPadding: true,
             body: SingleChildScrollView(
@@ -29,7 +29,7 @@ class AddTask extends StatelessWidget {
                   // crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     Container(
-                      color: kRead_primary,
+                      color: kRed_primary,
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.20,
                       child: Column(
