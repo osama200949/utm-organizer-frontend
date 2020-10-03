@@ -68,11 +68,13 @@ class _MainNavigationState extends State<MainNavigation> {
           //     ),
           //   )
           OpenContainer(
-            useRootNavigator: true,
-            closedElevation: 0.0,
-            openElevation: 0.0,
-            openColor: Colors.transparent,
-            closedColor: Colors.transparent,
+              useRootNavigator: true,
+              closedElevation: 0.0,
+              openElevation: 0.0,
+              closedShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(1000.0)),
+              openColor: Colors.transparent,
+              closedColor: Colors.transparent,
               closedBuilder: (context, action) {
                 return FloatingActionButton(
                   child: Icon(Icons.add),
@@ -82,7 +84,6 @@ class _MainNavigationState extends State<MainNavigation> {
                 );
               },
               openBuilder: (context, action) {
-
                 return AddTask();
               },
             )

@@ -68,15 +68,19 @@ class _TimeTableState extends State<Timetable> {
 
             headerHeight: 0, // DISABLE THE MONTH VIEW
           ),
-          floatingActionButton: FloatingActionButton(
-              backgroundColor: Color(0xffD63447),
-              child: Icon(
+          floatingActionButton: FloatingActionButton.extended(
+              icon: Icon(
                 Icons.done,
               ),
+              label: Text(
+                'Save ',
+                style: TextStyle(fontSize: 18),
+              ),
+              backgroundColor: Color(0xffD63447),
               onPressed: () {
                 // Provider.of<MeetingData>(context, listen: false)   //! Set timetable on calendar feature
                 //     .setTimeTable(data.classes);
-                
+
                 final data = Provider.of<ScheduleData>(context, listen: false);
                 if (data.selectedCourses.length > 0)
                   data.isThereIsTimetable = true;
