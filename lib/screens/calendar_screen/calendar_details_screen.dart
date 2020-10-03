@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/models/calendar_model/meeting_info.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import 'package:utm_orgnization/components/canvas/Canva_home.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/next_meeting.dart';
 import 'package:utm_orgnization/services/meetings_service.dart';
@@ -28,7 +28,7 @@ class _CalenderDetailState extends State<CalenderDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeetingData>(builder: (context, meetingData, _) {
+    return Consumer<MeetingProvider>(builder: (context, meetingData, _) {
       return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(

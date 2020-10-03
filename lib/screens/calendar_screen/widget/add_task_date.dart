@@ -2,11 +2,11 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import '../../../utils/constants.dart';
 
 class AddTaskDate extends StatefulWidget {
-  MeetingData meetingData;
+  MeetingProvider meetingData;
   AddTaskDate(this.meetingData);
   @override
   AddTaskDateState createState() => AddTaskDateState();

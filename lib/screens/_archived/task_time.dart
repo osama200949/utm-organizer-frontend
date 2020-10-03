@@ -7,7 +7,7 @@
 // import '../../../utils/constants.dart';
 
 // class TaskTime extends StatefulWidget {
-//   MeetingData meetingData;
+//   MeetingProvider meetingData;
 //   TaskTime(this.meetingData);
 //   @override
 //   _TaskTimeState createState() => _TaskTimeState();

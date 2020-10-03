@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 
 class MajorBox extends StatelessWidget {
   MajorBox(
@@ -11,7 +11,7 @@ class MajorBox extends StatelessWidget {
   final textColor;
   @override
   Widget build(BuildContext context) {
-    return Consumer<ScheduleData>(builder: (context, sData, child) {
+    return Consumer<ScheduleProvider>(builder: (context, sData, child) {
       return GestureDetector(
         onTap: () {
           sData.setCurrentMajor(index);

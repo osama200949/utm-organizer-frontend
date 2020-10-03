@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 
 void bottomSheet(sheetContext, Course course) {
-  final data = Provider.of<ScheduleData>(sheetContext, listen: false);
+  final data = Provider.of<ScheduleProvider>(sheetContext, listen: false);
   print(data);
   int section = 0;
   for (int j = 0; j < course.sections.length; j++) {

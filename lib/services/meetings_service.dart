@@ -3,7 +3,7 @@ import '../dependencies.dart';
 import 'rest/rest_service.dart';
 
 class MeetingService {
-  String userID; //!TODO: uid --- Done on MeetingData
+  String userID; //!TODO: uid --- Done on MeetingProvider
 
   final rest = service<RestService>();
 

@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/components/appbar_widget.dart';
 import 'package:utm_orgnization/components/canvas/Canva_home.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class SelectedCoursesScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class SelectedCoursesScreen extends StatefulWidget {
 class _SelectedCoursesScreenState extends State<SelectedCoursesScreen> {
   @override
   Widget build(BuildContext context) {
-    final data = Provider.of<ScheduleData>(context);
+    final data = Provider.of<ScheduleProvider>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(

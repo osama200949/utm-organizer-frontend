@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import '../../../utils/constants.dart';
 
 class AddTaskTime extends StatefulWidget {
-  MeetingData meetingData;
+  MeetingProvider meetingData;
   AddTaskTime(this.meetingData);
   @override
   _AddTaskTimeState createState() => _AddTaskTimeState();

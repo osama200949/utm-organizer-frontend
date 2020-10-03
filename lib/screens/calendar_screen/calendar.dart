@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:utm_orgnization/components/appbar_widget.dart';
 import 'package:utm_orgnization/components/canvas/Canvas_profile.dart';
 import 'package:utm_orgnization/models/calendar_model/meeting_info.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'package:utm_orgnization/models/user.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/meetings.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/timeline.dart';
@@ -26,8 +26,8 @@ class CalendarScreen extends StatelessWidget {
   }
 
   Scaffold _buildScreen(BuildContext context) {
-    final meetingData = Provider.of<MeetingData>(context, listen: false); //? copy
-    final scheduleData = Provider.of<ScheduleData>(context);//? copy
+    final meetingData = Provider.of<MeetingProvider>(context, listen: false); //? copy
+    final scheduleData = Provider.of<ScheduleProvider>(context);//? copy
 
     return Scaffold(
       extendBodyBehindAppBar: true,

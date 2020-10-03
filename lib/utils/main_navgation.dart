@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/components/bottom_navigation_bar.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import 'package:utm_orgnization/screens/activities_screens/club_event_info.dart';
 import 'package:utm_orgnization/screens/calendar_screen/add_task.dart';
 import 'package:utm_orgnization/screens/calendar_screen/calendar.dart';
@@ -64,7 +64,7 @@ class _MainNavigationState extends State<MainNavigation> {
           //     onPressed: () => Navigator.pushNamed(
           //       context,
           //       kAddTask,
-          //       arguments: Provider.of<MeetingData>(context, listen: false),
+          //       arguments: Provider.of<MeetingProvider>(context, listen: false),
           //     ),
           //   )
           OpenContainer(

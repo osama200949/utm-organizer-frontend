@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 
 class CategoryList extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class CategoryList extends StatefulWidget {
 class _CategoryListState extends State<CategoryList> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeetingData>(
+    return Consumer<MeetingProvider>(
       builder: (context, meetingData, child) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 15),

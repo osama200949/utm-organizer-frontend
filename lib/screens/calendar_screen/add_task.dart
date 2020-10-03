@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/add_task_colors.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/add_task_date.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/add_task_time.dart';
@@ -14,7 +14,7 @@ import '../../utils/constants.dart';
 class AddTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeetingData>(
+    return Consumer<MeetingProvider>(
       builder: (context, meetingData, child) {
         return WillPopScope(
           onWillPop: () => Future.value(false),

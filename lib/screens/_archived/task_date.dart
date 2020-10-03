@@ -6,7 +6,7 @@
 // import '../../../utils/constants.dart';
 
 // class TaskDate extends StatefulWidget {
-//   MeetingData meetingData;
+//   MeetingProvider meetingData;
 //   TaskDate(this.meetingData);
 //   @override
 //   TaskDateState createState() => TaskDateState();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -32,7 +32,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
             ? FlatButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, kTimetablePreview),
-                child: Provider.of<ScheduleData>(context, listen: false)
+                child: Provider.of<ScheduleProvider>(context, listen: false)
                         .isThereIsTimetable
                     ? Image.asset(
                         // When there is selected courses > 0

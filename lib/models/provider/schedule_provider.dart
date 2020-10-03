@@ -11,7 +11,7 @@ import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/services/schedule_service.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
-class ScheduleData extends ChangeNotifier {
+class ScheduleProvider extends ChangeNotifier {
   final secheduleService = service<ScheduleService>();
   List<String> yearsText = [
     "All",

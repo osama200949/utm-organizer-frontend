@@ -9,8 +9,8 @@ import 'package:utm_orgnization/services/meetings_service.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 import 'package:utm_orgnization/utils/routing.dart';
 import 'dependencies.dart' as di;
-import 'models/provider/meeting_data.dart';
-import 'models/provider/schedule_data.dart';
+import 'models/provider/meeting_provider.dart';
+import 'models/provider/schedule_provider.dart';
 import 'package:syncfusion_flutter_core/core.dart';
 
 import 'models/user.dart';
@@ -61,19 +61,19 @@ class _AppState extends State<App> {
           create: (_) => ClubData(),
           update: (_, clubs, clubData) => clubData..clubs = clubs,
         ),
-        ChangeNotifierProxyProvider<User,MeetingData>(
-          create: (context) => MeetingData(),
+        ChangeNotifierProxyProvider<User,MeetingProvider>(
+          create: (context) => MeetingProvider(),
           update: (context, user, meetingNotifier) => meetingNotifier..user = user,
         ),
-        ChangeNotifierProxyProvider<User,ScheduleData>(
-          create: (context) => ScheduleData(),
+        ChangeNotifierProxyProvider<User,ScheduleProvider>(
+          create: (context) => ScheduleProvider(),
           update: (context, user, scheduleNotifier) => scheduleNotifier..user = user,
         ),
         ChangeNotifierProvider(
           create: (_) => ClubData(),
         ),
         // ChangeNotifierProvider(
-        //   create: (_) => ScheduleData()..setDataFromDatabase(),
+        //   create: (_) => ScheduleProvider()..setDataFromDatabase(),
         // ),
       ],
       child: AppView(navigatorKey: navigatorKey, widget: widget),

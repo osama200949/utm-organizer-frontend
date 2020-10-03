@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class NextMeeting extends StatefulWidget {
@@ -24,7 +24,7 @@ class _NextMeetingState extends State<NextMeeting> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeetingData>(
+    return Consumer<MeetingProvider>(
       builder: (context, meetingData, _) {
         return PageView.builder(
             controller: controller,

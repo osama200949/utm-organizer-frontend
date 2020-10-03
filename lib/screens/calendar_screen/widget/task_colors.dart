@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 
 class BackGroundColorList extends StatefulWidget {
-  MeetingData meetingData;
+  MeetingProvider meetingData;
   BackGroundColorList(this.meetingData);
 
   @override

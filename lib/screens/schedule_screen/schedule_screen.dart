@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'package:utm_orgnization/components/canvas/Canva_home.dart';
 import 'package:utm_orgnization/models/schedule_model/year.dart';
 import 'package:utm_orgnization/utils/constants.dart';
@@ -15,9 +15,9 @@ class ScheduleScreen extends StatefulWidget {
 class _ScheduleScreenState extends State<ScheduleScreen> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<ScheduleData>(
+    return Consumer<ScheduleProvider>(
       builder: (context, data, _) {
-        final data = Provider.of<ScheduleData>(context);
+        final data = Provider.of<ScheduleProvider>(context);
         // if (data.majors == null) return fetchingDataInProgress();
 
         return buildScreen(context, data);
@@ -25,7 +25,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     );
   }
 
-  Scaffold buildScreen(BuildContext context, ScheduleData data) {
+  Scaffold buildScreen(BuildContext context, ScheduleProvider data) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(

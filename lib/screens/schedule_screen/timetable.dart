@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/utils/constants.dart';
@@ -20,7 +20,7 @@ class _TimeTableState extends State<Timetable> {
   @override
   Widget build(BuildContext context) {
     setState(() {});
-    return Consumer<ScheduleData>(
+    return Consumer<ScheduleProvider>(
       builder: (context, data, child) => Scaffold(
           body: SfCalendar(
             view: CalendarView.workWeek,
@@ -78,10 +78,10 @@ class _TimeTableState extends State<Timetable> {
               ),
               backgroundColor: Color(0xffD63447),
               onPressed: () {
-                // Provider.of<MeetingData>(context, listen: false)   //! Set timetable on calendar feature
+                // Provider.of<MeetingProvider>(context, listen: false)   //! Set timetable on calendar feature
                 //     .setTimeTable(data.classes);
 
-                final data = Provider.of<ScheduleData>(context, listen: false);
+                final data = Provider.of<ScheduleProvider>(context, listen: false);
                 if (data.selectedCourses.length > 0)
                   data.isThereIsTimetable = true;
                 else

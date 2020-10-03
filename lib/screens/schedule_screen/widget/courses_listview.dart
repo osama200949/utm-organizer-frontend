@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'course_details_bottom_sheet.dart';
 
 class CoursesListView extends StatefulWidget {
@@ -12,7 +12,7 @@ class CoursesListView extends StatefulWidget {
 class _MainBottomSheetState extends State<CoursesListView> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<ScheduleData>(builder: (context, data, _) {
+    return Consumer<ScheduleProvider>(builder: (context, data, _) {
       return Expanded(
         //! Recommended Courses......................
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'package:utm_orgnization/models/schedule_model/course.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/utils/constants.dart';
@@ -16,7 +16,7 @@ class TimetablePreview extends StatefulWidget {
 class _TimetablePreviewState extends State<TimetablePreview> {
   @override
   Widget build(BuildContext context) {
-    final classes = Provider.of<ScheduleData>(context).classes;
+    final classes = Provider.of<ScheduleProvider>(context).classes;
 
     return Scaffold(
         body: SfCalendar(

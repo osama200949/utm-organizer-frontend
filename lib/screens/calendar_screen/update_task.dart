@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/main.dart';
 import 'package:utm_orgnization/models/calendar_model/meeting_info.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/add_task_colors.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/add_task_date.dart';
 import 'package:utm_orgnization/screens/calendar_screen/widget/add_task_time.dart';
@@ -15,7 +15,7 @@ import 'package:utm_orgnization/utils/constants.dart';
 class UpdateTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeetingData>(
+    return Consumer<MeetingProvider>(
       builder: (context, meetingData, child) {
         return WillPopScope(
           onWillPop: () => Future.value(false),

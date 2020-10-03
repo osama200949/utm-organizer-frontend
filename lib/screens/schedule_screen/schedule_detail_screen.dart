@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/schedule_data.dart';
+import 'package:utm_orgnization/models/provider/schedule_provider.dart';
 import 'package:utm_orgnization/components/canvas/Canva_home.dart';
 import 'package:utm_orgnization/screens/schedule_screen/class_info.dart';
 import 'package:utm_orgnization/screens/schedule_screen/selected_courses_screen.dart';
@@ -29,7 +29,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
   int others = 0;
   @override
   Widget build(BuildContext context) {
-    return Consumer<ScheduleData>(
+    return Consumer<ScheduleProvider>(
       builder: (context, data, _) {
         return Scaffold(
           extendBodyBehindAppBar: true,

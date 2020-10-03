@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class TimeLine extends StatelessWidget {
@@ -11,7 +11,7 @@ class TimeLine extends StatelessWidget {
     List<Widget> timeCard = [];
 
     for (int i = 0;
-        i < Provider.of<MeetingData>(context).currendDayInfoLength();
+        i < Provider.of<MeetingProvider>(context).currendDayInfoLength();
         i++) {
       timeCard.add(TimlineCards(index: i));
     }
@@ -30,7 +30,7 @@ class TimlineCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeetingData>(
+    return Consumer<MeetingProvider>(
       builder: (context, meetingData, _) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 15),

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/models/calendar_model/meeting_info.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class Meetings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeetingData>(
+    return Consumer<MeetingProvider>(
       // selector: (_,meetingData ) =>meetingData.getEventToBeShown() ,
       builder: (_, meetingData, ___) {
-        // final meetingData = Provider.of<MeetingData>(context);
+        // final meetingData = Provider.of<MeetingProvider>(context);
         return ListView.builder(
           padding: EdgeInsets.only(left: 15),
           scrollDirection: Axis.horizontal,

@@ -5,8 +5,8 @@ import 'package:utm_orgnization/services/rest/rest_service.dart';
 import '../../dependencies.dart';
 import '../user.dart';
 
-class MeetingData extends ChangeNotifier {
-  MeetingData() {
+class MeetingProvider extends ChangeNotifier {
+  MeetingProvider() {
     setCurrentDay(DateTime.now());
     currentEventNumber = 0;
   }
@@ -22,6 +22,7 @@ class MeetingData extends ChangeNotifier {
 
   Future<void> setUserMeetings() async {
     if (_user == null) return;
+    
     meetingService.userID = _user.uid;
     final meetings = await meetingService.getUserMeetings();
     setMeetingsFromServer(meetings);
@@ -246,7 +247,7 @@ class MeetingData extends ChangeNotifier {
   static final String dTaskTitle = 'No title';
   static final String dTaskDescription = 'No description';
   static final String dLocation = 'Unknown';
-} // MeetingData{}
+} // MeetingProvider{}
 
 //? Archieve
 // void deleteTask({String id, MeetingInfo meeting}) {

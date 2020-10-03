@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:utm_orgnization/models/provider/meeting_data.dart';
+import 'package:utm_orgnization/models/provider/meeting_provider.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 import 'events/event_unhiglighted.dart';
 import 'events/events_highlighted.dart';
@@ -37,7 +37,7 @@ class _TopCalendarState extends State<TopCalendar>
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeetingData>(
+    return Consumer<MeetingProvider>(
       builder: (context, meetingData, _) {
         return Padding(
           padding: const EdgeInsets.only(
