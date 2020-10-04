@@ -1,7 +1,7 @@
 import 'package:utm_orgnization/models/schedule_model/section.dart';
 
 class Course {
-  final String id;
+  String id;
   String userID;
   final String type;
   final String code;
@@ -12,7 +12,8 @@ class Course {
 
   Course.fromJson(Map<String, dynamic> json)
       : this(
-            id: json['id'] != null ? json['id'] : '',
+            // id: json['id'] != null ? json['id'] : '',
+            id: json['id'],
             userID: json['userID'] ,
             type: json['type'],
             code: json["code"],

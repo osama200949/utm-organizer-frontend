@@ -200,24 +200,43 @@ class ScheduleProvider extends ChangeNotifier {
         break;
       }
     }
-    try {
-      if (!present) {
-        final result = await secheduleService.addSelectedCourse(cs);
-        selectedCourses.add(result);
-      } else
-        await updateCourse(c);
-    } catch (e) {
-      throw e;
+    // try {
+    if (!present) {
+      // final result = await secheduleService.addSelectedCourse(cs);
+      selectedCourses.add(cs);
+    } else {
+      await updateCourse(c);
     }
+    // }
+    // catch (e) {
+    //   throw e;
+    // }
 
     notifyListeners();
   }
 
-  void updateCourse(Course c) async {
+  //! Only add after the user hit save from timetable screen
+  Future<void> addSelectedCoursesToDatabase() async {
+    try {
+      await secheduleService.removeAllSelectedCourse();
+    } catch (e) {
+      print(e);
+    }
+    try {
+      selectedCourses.forEach((course) async {
+        final result = await secheduleService.addSelectedCourse(course);
+        course.id = result.id;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> updateCourse(Course c) async {
     for (int i = 0; i < selectedCourses.length; i++) {
       if (c.code == selectedCourses[i].code) {
         selectedCourses[i].sections = [c.sections[currentSection]];
-        await secheduleService.updateSelectedCourse(selectedCourses[i]);
+        // await secheduleService.updateSelectedCourse(selectedCourses[i]);
       }
     }
   }
@@ -234,13 +253,14 @@ class ScheduleProvider extends ChangeNotifier {
       {@required Course course, @required int index}) async {
     for (int i = 0; i < selectedCourses.length; i++) {
       if (selectedCourses[i].code == course.code) {
-        try {
-          await secheduleService.removeSelectedCourse(selectedCourses[i]);
-          setIsPressed(selectedCourses[i]);
-          selectedCourses.removeAt(i);
-        } catch (e) {
-          throw e;
-        }
+        // try {
+        // await secheduleService.removeSelectedCourse(selectedCourses[i]);
+        setIsPressed(selectedCourses[i]);
+        selectedCourses.removeAt(i);
+        // }
+        // catch (e) {
+        //   throw e;
+        // }
       }
     }
 

@@ -83,6 +83,7 @@ class _TimeTableState extends State<Timetable> {
 
                 final data =
                     Provider.of<ScheduleProvider>(context, listen: false);
+                data.addSelectedCoursesToDatabase();
                 if (data.selectedCourses.length > 0)
                   data.isThereIsTimetable = true;
                 else
