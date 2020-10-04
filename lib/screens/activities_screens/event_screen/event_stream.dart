@@ -65,10 +65,10 @@ class _EventsStreamState extends State<EventsStream> {
                 ticketPrice: document['ticketPrice'],
                 eventLocation: document['eventLocation'],
                 eventInterster: List.from(
-                    document.data["eventInterester"] == null
+                    document.data()["eventInterester"] == null
                         ? []
-                        : document.data["eventInterester"]),
-                eventId: document.documentID,
+                        : document.data()["eventInterester"]),
+                eventId: document.id,
                 imageURL: a.toString());
             return e;
           }).toList();

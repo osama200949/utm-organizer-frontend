@@ -1,17 +1,13 @@
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/dependencies.dart';
 import 'package:utm_orgnization/models/user.dart';
 import 'package:utm_orgnization/services/rest/rest_service.dart';
 
-/*
-  Author Credit :Ibrahim Katari
-  Auth Services File.
-*/
 class AuthServices with ChangeNotifier {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final firebase.FirebaseAuth _auth = firebase.FirebaseAuth.instance;
   bool _isAuthenticated = false;
 
   get isAuthenticated => _isAuthenticated;
@@ -25,9 +21,9 @@ class AuthServices with ChangeNotifier {
     String password,
   }) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      FirebaseUser user = result.user;
+      final firebase.UserCredential result = await _auth
+          .signInWithEmailAndPassword(email: email, password: password);
+      firebase.User user = result.user;
       return user;
     } catch (e) {
       print(e.toString());
@@ -47,20 +43,19 @@ class AuthServices with ChangeNotifier {
   }
 
   Future<String> retreiveToken() async {
-    var crrUser = await _auth.currentUser();
-    IdTokenResult idtoken = await crrUser.getIdToken();
-    String token = idtoken.token;
+    var crrUser = await _auth.currentUser;
+    String token = await crrUser.getIdToken();
     return token;
   }
 
-  User userFromFirebaseUser(FirebaseUser user) {
+  User userFromFirebaseUser(firebase.User user) {
     if (user != null) {
       _isAuthenticated = true;
       notifyListeners();
       return User(
         displayName: user.displayName,
         uid: user.uid,
-        photoUrl: user.photoUrl,
+        photoUrl: user.photoURL,
         email: user.email,
       );
     } else {

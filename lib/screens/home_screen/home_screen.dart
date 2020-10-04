@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               // EventsStream(
                               //   selectOngoingEvent: true,
                               // ),
-                              Club_widget(),
+                              // Club_widget(),
                             ],
                           ),
                         )

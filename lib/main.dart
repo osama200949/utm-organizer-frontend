@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:utm_orgnization/data/clubData.dart';
@@ -12,20 +13,23 @@ import 'dependencies.dart' as di;
 import 'models/provider/meeting_provider.dart';
 import 'models/provider/schedule_provider.dart';
 import 'package:syncfusion_flutter_core/core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'models/user.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   di.init();
   SyncfusionLicense.registerLicense(
       'NT8mJyc2IWhia31ifWN9ZmdoYmF8YGJ8ampqanNiYmlmamlmanMDHmg8IDI+MmFjY2pnahM0PjI6P30wPD4=');
-
   return runApp(App());
   // runApp(App());
 }
 
 class App extends StatefulWidget {
   int _currentPageIndex = 0;
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   @override
   _AppState createState() => _AppState();
@@ -33,6 +37,26 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final navigatorKey = GlobalKey<NavigatorState>();
+  List<Notification> notifications;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget._firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print('onMessage: $message');
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print('onLaunch: $message');
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print('onResume: $message');
+      },
+    );
+    widget._firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, badge: true, alert: true));
+  }
+
   void changePage(int index) {
     setState(() {
       widget._currentPageIndex = index;
@@ -61,13 +85,15 @@ class _AppState extends State<App> {
           create: (_) => ClubData(),
           update: (_, clubs, clubData) => clubData..clubs = clubs,
         ),
-        ChangeNotifierProxyProvider<User,MeetingProvider>(
+        ChangeNotifierProxyProvider<User, MeetingProvider>(
           create: (context) => MeetingProvider(),
-          update: (context, user, meetingNotifier) => meetingNotifier..user = user,
+          update: (context, user, meetingNotifier) =>
+              meetingNotifier..user = user,
         ),
-        ChangeNotifierProxyProvider<User,ScheduleProvider>(
+        ChangeNotifierProxyProvider<User, ScheduleProvider>(
           create: (context) => ScheduleProvider(),
-          update: (context, user, scheduleNotifier) => scheduleNotifier..user = user,
+          update: (context, user, scheduleNotifier) =>
+              scheduleNotifier..user = user,
         ),
         ChangeNotifierProvider(
           create: (_) => ClubData(),
