@@ -4,10 +4,10 @@ import 'package:http/http.dart' as http;
 
 class RestService {
   // static const String baseUrl = 'http://192.168.56.1:3000';  //!Json-Server
-  static const String baseUrl =
-      'https://us-central1-utm-organizer-backend.cloudfunctions.net/api/v1'; //!Remote
   // static const String baseUrl =
-  //     'http://10.0.2.2:5001/utm-organizer-backend/us-central1/api/v1'; //! Local emulator
+  //     'https://us-central1-utm-organizer-backend.cloudfunctions.net/api/v1'; //!Remote
+  static const String baseUrl =
+      'http://10.0.2.2:5001/utm-organizer-backend/us-central1/api/v1'; //! Local emulator
 
   String idToken;
 

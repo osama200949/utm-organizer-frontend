@@ -72,7 +72,7 @@ class ScheduleService {
   }
 
   Future removeAllSelectedCourse() async {
-    final response = await rest.delete('majors/selectedCourses');
+    final response = await rest.delete('majors/userSelectedCourses/$userID');
 
     print("Delete Response: \n");
     print(response);
