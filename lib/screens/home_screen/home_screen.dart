@@ -111,227 +111,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, kScheduleRoute);
-                                    },
-                                    child: Container(
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Container(
-                                            height: 110.00,
-                                            width: 110.00,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffffffff),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  offset: Offset(5.00, 5.00),
-                                                  color: Color(0xff000000)
-                                                      .withOpacity(0.06),
-                                                  blurRadius: 15,
-                                                ),
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(20.00),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 110.00,
-                                            width: 110.00,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                begin: Alignment.topLeft,
-                                                end: Alignment.bottomRight,
-                                                colors: [
-                                                  Color(0xFFFFFEFE),
-                                                  Color(0xFFdfdfdf)
-                                                ],
-                                              ),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  offset: Offset(-6.00, -6.00),
-                                                  color: Color(0xffdfdfdf)
-                                                      .withOpacity(0.30),
-                                                  blurRadius: 15,
-                                                ),
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(20.00),
-                                            ),
-                                          ),
-                                          Positioned.fill(
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                SvgPicture.asset(
-                                                  'images/class_.svg',
-                                                  color: Color(0xff3f3f44),
-                                                  height: 50,
-                                                ),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  "Timetable",
-                                                  style: kSecondary_heading_2
-                                                      .copyWith(
-                                                    color: Color(0xff3f3f44),
-                                                    fontSize: 16,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                  FatIconHomButton(
+                                    assetLocation: 'images/class_.svg',
+                                    lableText: "Timetable",
                                   ),
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: Container(
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Container(
-                                            height: 110.00,
-                                            width: 110.00,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffffffff),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  offset: Offset(5.00, 5.00),
-                                                  color: Color(0xff000000)
-                                                      .withOpacity(0.06),
-                                                  blurRadius: 15,
-                                                ),
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(20.00),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 110.00,
-                                            width: 110.00,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                begin: Alignment.topLeft,
-                                                end: Alignment.bottomRight,
-                                                colors: [
-                                                  Color(0xFFFFFEFE),
-                                                  Color(0xFFdfdfdf)
-                                                ],
-                                              ),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  offset: Offset(-6.00, -6.00),
-                                                  color: Color(0xffdfdfdf)
-                                                      .withOpacity(0.30),
-                                                  blurRadius: 15,
-                                                ),
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(20.00),
-                                            ),
-                                          ),
-                                          Positioned.fill(
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                SvgPicture.asset(
-                                                  'images/icons/club.svg',
-                                                  color: Color(0xff3f3f44),
-                                                ),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  "Clubs ",
-                                                  style: kSecondary_heading_2
-                                                      .copyWith(
-                                                          color: Color(
-                                                              0xff3f3f44)),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                  FatIconHomButton(
+                                    assetLocation:  'images/icons/club.svg',
+                                    lableText:  "Clubs",
                                   ),
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: Container(
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Container(
-                                            height: 110.00,
-                                            width: 110.00,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffffffff),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  offset: Offset(5.00, 5.00),
-                                                  color: Color(0xff000000)
-                                                      .withOpacity(0.06),
-                                                  blurRadius: 15,
-                                                ),
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(20.00),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 110.00,
-                                            width: 110.00,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                begin: Alignment.topLeft,
-                                                end: Alignment.bottomRight,
-                                                colors: [
-                                                  Color(0xFFFFFEFE),
-                                                  Color(0xFFdfdfdf)
-                                                ],
-                                              ),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  offset: Offset(-6.00, -6.00),
-                                                  color: Color(0xffdfdfdf)
-                                                      .withOpacity(0.30),
-                                                  blurRadius: 15,
-                                                ),
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(20.00),
-                                            ),
-                                          ),
-                                          Positioned.fill(
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                SvgPicture.asset(
-                                                  'images/icons/school.svg',
-                                                  color: Color(0xff3f3f44),
-                                                ),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  "Events",
-                                                  style: kSecondary_heading_2
-                                                      .copyWith(
-                                                    color: Color(0xff3f3f44),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                  FatIconHomButton(
+                                    assetLocation: 'images/icons/school.svg',
+                                    lableText:  "Events",
                                   ),
+                               
                                 ],
                               ),
                               Padding(
@@ -349,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               // EventsStream(
                               //   selectOngoingEvent: true,
                               // ),
-                              // Club_widget(),
+                              Club_widget(),
                             ],
                           ),
                         )
@@ -364,6 +156,85 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+    );
+  }
+}
+
+class FatIconHomButton extends StatelessWidget {
+  final assetLocation;
+  final lableText;
+  FatIconHomButton({@required this.assetLocation, @required this.lableText});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, kScheduleRoute);
+      },
+      child: Container(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: 110.00,
+              width: 110.00,
+              decoration: BoxDecoration(
+                color: Color(0xffffffff),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(5.00, 5.00),
+                    color: Color(0xff000000).withOpacity(0.06),
+                    blurRadius: 5,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(20.00),
+              ),
+            ),
+            Container(
+              height: 110.00,
+              width: 110.00,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFFFFFEFE), Color(0xFFdfdfdf)],
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(3.00, 6.00),
+                    // color: Color(0xffdfdfdf)
+                    color: Colors.black
+                        // .withOpacity(0.30),
+                        .withOpacity(0.15),
+                    blurRadius: 15,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(20.00),
+              ),
+            ),
+            Positioned.fill(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SvgPicture.asset(
+                  assetLocation,
+                  color: Color(0xff3f3f44),
+                  height: 50,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  lableText,
+                  style: kSecondary_heading_2.copyWith(
+                    color: Color(0xff3f3f44),
+                    fontSize: 16,
+                  ),
+                )
+              ],
+            ))
+          ],
+        ),
+      ),
     );
   }
 }
