@@ -1,12 +1,12 @@
-class Notification {
+class NotificationModel {
   String id;
   String userID;
   final String title;
   final String body;
 
-  Notification({this.id = '',this.userID, this.body,this.title});
+  NotificationModel({this.id = '',this.userID, this.body,this.title});
 
-  Notification.fromJson(Map<String, dynamic> json)
+  NotificationModel.fromJson(Map<String, dynamic> json)
       : this(
             id: json['id'],
             userID: json['userID'] ,

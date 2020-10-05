@@ -14,6 +14,7 @@ import 'models/provider/meeting_provider.dart';
 import 'models/provider/schedule_provider.dart';
 import 'package:syncfusion_flutter_core/core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import './utils/notification_model.dart';
 
 import 'models/user.dart';
 
@@ -37,7 +38,13 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final navigatorKey = GlobalKey<NavigatorState>();
-  List<Notification> notifications;
+  //  final notificationProvider = Provider.of<NotificationProvider>(context);
+
+  Map<String, List<NotificationModel>> notifications = {
+    'onMessage' : [],
+    'onLaunch' : [],
+    'onResume' : [],
+  };
   @override
   void initState() {
     // TODO: implement initState
@@ -45,6 +52,7 @@ class _AppState extends State<App> {
     widget._firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print('onMessage: $message');
+        notifications['onMessage'].add(NotificationModel(title: message['title'], body: message['body']));
       },
       onLaunch: (Map<String, dynamic> message) async {
         print('onLaunch: $message');
