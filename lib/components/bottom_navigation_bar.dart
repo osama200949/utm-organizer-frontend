@@ -28,10 +28,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 width: 15,
               ),
             buildNavBarItem('images/navIcons/material-favorite.svg', 2),
-                          /*
-                Author Credit :Ibrahim Katari
-                Auth Services File.
-                */
             buildNavBarItem(
                 Provider.of<User>(context)?.photoUrl == null
                     ? "https://gravatar.com/avatar/bf91ea452bc710972b03c716bdf74e15?s=400&d=robohash&r=x"

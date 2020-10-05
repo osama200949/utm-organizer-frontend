@@ -321,10 +321,6 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    /*
-  Author Credit :Ibrahim Katari
-  Form
-  */
     return Form(
       key: _formKey,
       child: Consumer<User>(
