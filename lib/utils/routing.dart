@@ -77,8 +77,8 @@ class Router {
       //   break;
       case kMainNv:
         builder = (BuildContext context) => MainNavigation(
-          currentIndex: 0,
-        );
+              currentIndex: 0,
+            );
         break;
 
       // case kQrCode:

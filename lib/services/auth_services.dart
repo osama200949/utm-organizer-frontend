@@ -68,7 +68,7 @@ class AuthServices with ChangeNotifier {
     service<AuthServices>()
         .retreiveToken()
         .then((value) => service<RestService>().idToken = value);
-    return _auth.onAuthStateChanged.map(userFromFirebaseUser);
+    return _auth.authStateChanges().map(userFromFirebaseUser);
   }
 
   Future signUp({

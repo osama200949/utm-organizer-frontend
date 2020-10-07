@@ -162,10 +162,10 @@ void bottomSheet(sheetContext, Course course) {
                               state(() {
                                 if (course.sections[section].isPressed) {
                                   data.currentSection = section;
+                                  course.sections[section].isPressed = false;
                                   data.removeCourse(
-                                    course: course,
-                                    index: data.currentCourse
-                                  );
+                                      course: course,
+                                      index: data.currentCourse);
                                 }
                               });
                             }
