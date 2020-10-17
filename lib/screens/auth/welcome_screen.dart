@@ -14,8 +14,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
     Timer(
-      Duration(seconds: 2),
-      () => Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false),
+      Duration(seconds: 1),
+      () => Navigator.pushNamedAndRemoveUntil(context, kMainNv, (_) => false),
     );
   }
 

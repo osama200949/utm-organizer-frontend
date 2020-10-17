@@ -70,7 +70,7 @@ class _AppState extends State<App> {
       widget._currentPageIndex = index;
     });
     if (index == 0) {
-      navigatorKey.currentState.pushReplacementNamed(kRootRoute);
+      navigatorKey.currentState.pushReplacementNamed(kHomeScreen);
     } else if (index == 1) {
       navigatorKey.currentState.pushReplacementNamed(kCalenderRoute);
     } else if (index == 2) {

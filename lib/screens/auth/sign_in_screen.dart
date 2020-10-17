@@ -113,8 +113,11 @@ class _SignInScreenState extends State<SignInScreen> {
                             Scaffold.of(context).showSnackBar(_valdation(user));
                           } else {
                             Navigator.pushNamedAndRemoveUntil(
-                                context, kMainNv, (_) => false);
+                                context, kMainNv, (context) => false);
                           }
+                          //   Navigator.pushReplacementNamed(
+                          //       context, kMainNv);
+                          // }
                         },
                         child: Align(
                           alignment: Alignment.centerRight,

@@ -3,10 +3,10 @@ import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 //! Routing -
 
-const kRootRoute = '/kMainNv';
+const kHomeScreen = '/kHomeScreen';
 const kHomeRoute = '/SpalshScreen';
 const kWlcomeViewRoute = '/WelcomingView';
-const kWlcomeScreenRoute = '/WelcomingView';
+const kWelcomeScreenRoute = '/WelcomingView';
 const kScheduleRoute = '/schedule_screen';
 const kScheduleDetailsRoute = '/schedule_detail';
 const kSelectedCourses = '/selected_courses';

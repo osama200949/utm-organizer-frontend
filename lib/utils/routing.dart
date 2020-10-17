@@ -39,7 +39,7 @@ class Router {
     final data = settings.arguments;
     WidgetBuilder builder;
     switch (settings.name) {
-      case kRootRoute:
+      case kHomeScreen:
         builder = (BuildContext context) => HomeScreen();
         break;
       case kSignInRoute:
@@ -66,7 +66,7 @@ class Router {
       case kWlcomeViewRoute:
         builder = (BuildContext context) => WelcomingView();
         break;
-      case kWlcomeScreenRoute:
+      case kWelcomeScreenRoute:
         builder = (BuildContext context) => WelcomeScreen();
         break;
       case kHomeRoute:

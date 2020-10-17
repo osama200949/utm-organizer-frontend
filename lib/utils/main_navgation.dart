@@ -8,7 +8,6 @@ import 'package:utm_orgnization/screens/calendar_screen/calendar.dart';
 import 'package:utm_orgnization/screens/home_screen/home_screen.dart';
 import 'package:utm_orgnization/screens/profile_screens/profile_screen.dart';
 import 'package:animations/animations.dart';
-import 'package:utm_orgnization/screens/saved_screen/saved_screen.dart';
 import 'package:utm_orgnization/utils/constants.dart';
 
 class MainNavigation extends StatefulWidget {
