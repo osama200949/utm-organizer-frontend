@@ -323,14 +323,14 @@ void _showDialog(mcontext, List<ClassInfo> classes, Function clearAll) {
         title: Text("You have clash"),
         content: Text("Please solve the clash and submit again"),
         actions: <Widget>[
-          FlatButton(
-            child: Text("Clear all courses"),
-            onPressed: () {
-              _showConfirmationDialog(mcontext, clearAll);
-              // clearAll();
-              // Navigator.pop(context);
-            },
-          ),
+          // FlatButton(
+          //   child: Text("Clear all courses"),
+          //   onPressed: () {
+          //     _showConfirmationDialog(mcontext, clearAll);
+          //     // clearAll();
+          //     // Navigator.pop(context);
+          //   },
+          // ),
           FlatButton(
             child: Text("Preview"),
             onPressed: () {
