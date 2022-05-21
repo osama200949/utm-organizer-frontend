@@ -668,7 +668,7 @@ class _EditScreenWalkthrowState extends State<EditScreenWalkthrow> {
                                       Center(
                                         child: Container(
                                           child: Stack(
-                                            overflow: Overflow.clip,
+                                            // overflow: Overflow.clip,
                                             children: <Widget>[
                                               SvgPicture.asset(
                                                 'images/phone_frame.svg',

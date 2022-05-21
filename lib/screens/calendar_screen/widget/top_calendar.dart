@@ -203,10 +203,10 @@ class _TopCalendarState extends State<TopCalendar>
                     ],
                   );
                 }),
-                onDaySelected: (date, meeting) {
-                  meetingData.setCurrentDay(date);
-                  _animationController.forward(from: 0.0);
-                },
+                // onDaySelected: (date, meeting) {
+                //   meetingData.setCurrentDay(date);
+                //   _animationController.forward(from: 0.0);
+                // },
                 availableCalendarFormats: const {
                   CalendarFormat.month: 'Month',
                   CalendarFormat.twoWeeks: 'Two weeks',

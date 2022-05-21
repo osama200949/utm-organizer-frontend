@@ -55,13 +55,12 @@ class EditProfile extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(42),
                             color: Color(0xFFF57B51),
-
                           ),
-                           child: Icon(
-                             FontAwesomeIcons.camera,
-                             color: Colors.white,
-                             size: 25,
-                           ),
+                          child: Icon(
+                            FontAwesomeIcons.camera,
+                            color: Colors.white,
+                            size: 25,
+                          ),
                         ),
                       ],
                     ),
@@ -71,7 +70,7 @@ class EditProfile extends StatelessWidget {
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'Full Name',
-                        hasFloatingPlaceholder: true,
+                        // hasFloatingPlaceholder: true,
                         labelStyle: TextStyle(
                           color: Colors.black,
                           fontSize: 12,
@@ -81,7 +80,7 @@ class EditProfile extends StatelessWidget {
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'Email',
-                        hasFloatingPlaceholder: true,
+                        // hasFloatingPlaceholder: true,
                         labelStyle: TextStyle(
                           color: Colors.black,
                           fontSize: 12,
@@ -91,7 +90,7 @@ class EditProfile extends StatelessWidget {
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'Password',
-                        hasFloatingPlaceholder: true,
+                        // hasFloatingPlaceholder: true,
                         labelStyle: TextStyle(
                           color: Colors.black,
                           fontSize: 12,
@@ -101,7 +100,7 @@ class EditProfile extends StatelessWidget {
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'Password',
-                        hasFloatingPlaceholder: true,
+                        // hasFloatingPlaceholder: true,
                         labelStyle: TextStyle(
                           color: Colors.black,
                           fontSize: 12,

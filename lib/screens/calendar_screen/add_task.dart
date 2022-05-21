@@ -21,7 +21,7 @@ class AddTask extends StatelessWidget {
           child: Scaffold(
             backgroundColor: kRed_primary,
             //  extendBody: true,
-            resizeToAvoidBottomPadding: true,
+            // resizeToAvoidBottomPadding: true,
             body: SingleChildScrollView(
               child: SafeArea(
                 child: Column(

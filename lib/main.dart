@@ -8,7 +8,7 @@ import 'package:utm_orgnization/services/auth_services.dart';
 import 'package:utm_orgnization/services/club_data_service.dart';
 import 'package:utm_orgnization/services/meetings_service.dart';
 import 'package:utm_orgnization/utils/constants.dart';
-import 'package:utm_orgnization/utils/routing.dart';
+import 'package:utm_orgnization/utils/routing.dart' as routing;
 import 'dependencies.dart' as di;
 import 'models/provider/meeting_provider.dart';
 import 'models/provider/schedule_provider.dart';
@@ -41,9 +41,9 @@ class _AppState extends State<App> {
   //  final notificationProvider = Provider.of<NotificationProvider>(context);
 
   Map<String, List<NotificationModel>> notifications = {
-    'onMessage' : [],
-    'onLaunch' : [],
-    'onResume' : [],
+    'onMessage': [],
+    'onLaunch': [],
+    'onResume': [],
   };
   @override
   void initState() {
@@ -52,7 +52,8 @@ class _AppState extends State<App> {
     widget._firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print('onMessage: $message');
-        notifications['onMessage'].add(NotificationModel(title: message['title'], body: message['body']));
+        notifications['onMessage'].add(
+            NotificationModel(title: message['title'], body: message['body']));
       },
       onLaunch: (Map<String, dynamic> message) async {
         print('onLaunch: $message');
@@ -133,7 +134,7 @@ class AppView extends StatelessWidget {
       initialRoute: kHomeRoute,
       navigatorKey: navigatorKey,
       onGenerateRoute: (RouteSettings settings) {
-        Router router = Router(
+        routing.Router router = routing.Router(
           currentPageIndex: widget._currentPageIndex,
         );
         return router.routing(

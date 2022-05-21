@@ -116,14 +116,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     lableText: "Timetable",
                                   ),
                                   FatIconHomButton(
-                                    assetLocation:  'images/icons/club.svg',
-                                    lableText:  "Clubs",
+                                    assetLocation: 'images/icons/club.svg',
+                                    lableText: "Clubs",
                                   ),
                                   FatIconHomButton(
                                     assetLocation: 'images/icons/school.svg',
-                                    lableText:  "Events",
+                                    lableText: "Events",
                                   ),
-                               
                                 ],
                               ),
                               Padding(
@@ -152,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             )
           ],
-          overflow: Overflow.clip,
+          // overflow: Overflow.clip,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,

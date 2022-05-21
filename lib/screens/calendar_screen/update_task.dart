@@ -21,7 +21,7 @@ class UpdateTask extends StatelessWidget {
           onWillPop: () => Future.value(false),
           child: Scaffold(
             //  extendBody: true,
-            resizeToAvoidBottomPadding: true,
+            // resizeToAvoidBottomPadding: true,
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(
