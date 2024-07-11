@@ -1,7 +1,7 @@
 
 ## Project Title: UTM Orgnizer 
 
-## Video URL: https://www.youtube.com/watch?v=TMAHmOFkyKM
+## Video URL: [https://www.youtube.com/watch?v=TMAHmOFkyKM](https://youtu.be/xcg_2VNkLA4)
 
 ## REST API URL/Project URL on Firebase or heroku :
  API : https://us-central1-utm-organizer-backend.cloudfunctions.net/api
